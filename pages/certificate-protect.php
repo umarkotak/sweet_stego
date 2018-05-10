@@ -1,3 +1,6 @@
+<script src="lib/crypto/sha512v2.js"></script>
+<script src="lib/crypto/aes.js"></script>
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
@@ -14,7 +17,7 @@
 <section class="content">
   <div class="row">
 
-    <form>
+    <!-- <form> -->
 
     <div class="col-md-4">
       <div class="box box-primary">
@@ -45,7 +48,7 @@
 
           <div class="form-group">
             <label>Informasi Tambahan</label>
-            <textarea id="certificate_information" name="certificate_information" class="form-control" rows="4" placeholder="sertifikat workshop html lab dasar"></textarea>
+            <textarea id="certificate_additional_information" name="certificate_additional_information" class="form-control" rows="4" placeholder="sertifikat workshop html lab dasar"></textarea>
           </div>
         </div>
       </div>
@@ -58,7 +61,7 @@
         <div class="box-body">
           <div class="form-group">
             <label>Nama</label>
-            <input type="text" id="owner_name" name="owner_name" class="form-control" placeholder="m umar ramadhana">
+            <input type="text" id="certificate_owner_name" name="certificate_owner_name" class="form-control" placeholder="m umar ramadhana">
           </div>
         </div>
       </div>
@@ -77,14 +80,14 @@
             <img id="preview_certificate_image" width="100%" class="image">
           </div>
 
-          <div id="div_confirmation" class="form-group" hidden>
-            <button id="btn_protect_certificate" name="btn_protect_certificate" type="submit" onclick="" class="btn btn-success pull-right">Protect Certificate</button>
+          <div id="div_confirmation" class="form-group">
+            <button id="btn_protect_certificate" name="btn_protect_certificate" onclick="protect_certificate()" class="btn btn-success pull-right">Protect Certificate</button>
           </div>
         </div>
       </div>
     </div>
 
-    </form>
+    <!-- </form> -->
 
   </div>
 </section>
@@ -97,4 +100,23 @@
     $("#div_confirmation").show();
   };
 
+  function protect_certificate() {
+    var certificate_data = {};
+    certificate_data["certificate_name"] = $("#certificate_name").val();
+    certificate_data["certificate_publisher"] = $("#certificate_publisher").val();
+    certificate_data["certificate_date_published"] = $("#certificate_date_published").val();
+    certificate_data["certificate_number"] = $("#certificate_number").val();
+    certificate_data["certificate_additional_information"] = $("#certificate_additional_information").val();
+    certificate_data["certificate_owner_name"] = $("#certificate_owner_name").val();
+
+    var certificate_data_json = JSON.stringify(certificate_data);
+    var certificate_data_json_512hash = sha512(certificate_data_json);
+    var certificate_data_json_512hash_enc = GibberishAES.enc(certificate_data_json, certificate_data_json_512hash);
+    var certificate_data_json_512hash_dec = GibberishAES.dec(certificate_data_json_512hash_enc, certificate_data_json_512hash);
+
+    console.log(certificate_data_json);
+    console.log(certificate_data_json_512hash);
+    console.log(certificate_data_json_512hash_enc);
+    console.log(certificate_data_json_512hash_dec);
+  }
 </script>
