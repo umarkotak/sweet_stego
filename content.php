@@ -10,6 +10,7 @@ if (isset($_GET['page'])) {
   else if ($page == 'js0')                                       { include "pages/js-0.php"; }
   else if ($page == 'js1')                                       { include "pages/js-1.php"; }
   else if ($page == 'js2')                                       { include "pages/js-2.php"; }
+  else if ($page == 'js3')                                       { include "pages/js-3.php"; }
   else                                                           { include "pages/notfound.php"; }
 } else {
   include "pages/dashboard.php";

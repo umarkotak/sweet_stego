@@ -22,6 +22,7 @@
       <li><a href="?page=js0"><i class="fa fa-circle-o"></i> JS 0 - JS Basic</a></li>
       <li><a href="?page=js1"><i class="fa fa-circle-o"></i> JS 1 - Steganograph</a></li>
       <li><a href="?page=js2"><i class="fa fa-circle-o"></i> JS 2 - Canvas Exercise</a></li>
+      <li><a href="?page=js3"><i class="fa fa-circle-o"></i> JS 3 - Histogram</a></li>
 
     </ul>
   </section>
