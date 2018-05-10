@@ -72,7 +72,13 @@
         <div class="box-body">
           <div class="form-group">
             <label>Upload Gambar Sertifikat</label>
-            <input type="file" id="certificate_image" name="certificate_image" class="form-control">
+            <p>Gambar sertifikat yang diupload akan di resize menjadi 800 x 450 pixels,</p>
+            <input type="file" accept="image/*" id="certificate_image" name="certificate_image" onchange="preview_image(event)" class="form-control">
+            <img id="preview_certificate_image" width="100%" class="image">
+          </div>
+
+          <div id="div_confirmation" class="form-group" hidden>
+            <button id="btn_protect_certificate" name="btn_protect_certificate" type="submit" onclick="" class="btn btn-success pull-right">Protect Certificate</button>
           </div>
         </div>
       </div>
@@ -82,3 +88,13 @@
 
   </div>
 </section>
+
+<script type="text/javascript">
+
+  var preview_image = function(event) {
+    var preview_certificate_image = document.getElementById('preview_certificate_image');
+    preview_certificate_image.src = URL.createObjectURL(event.target.files[0]);
+    $("#div_confirmation").show();
+  };
+
+</script>

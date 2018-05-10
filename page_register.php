@@ -1,7 +1,7 @@
 <?php session_start(); ?>
-<?php include "config.php" ?>
+<?php include "config.php"; ?>
 <?php include "head.php"; ?>
-<?php include "notice.php" ?>
+<?php include "notice.php"; ?>
 
 <body class="hold-transition login-page">
 <div class="login-box">
