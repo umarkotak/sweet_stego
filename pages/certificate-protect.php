@@ -1,3 +1,4 @@
+<script src="lib/cryptostego.js"></script>
 <script src="lib/crypto/sha512v2.js"></script>
 <script src="lib/crypto/aes.js"></script>
 
@@ -16,9 +17,6 @@
 <!-- Main content -->
 <section class="content">
   <div class="row">
-
-    <!-- <form> -->
-
     <div class="col-md-4">
       <div class="box box-primary">
         <div class="box-header">
@@ -26,6 +24,11 @@
         </div>
 
         <div class="box-body">
+          <div class="form-group">
+            <label>Nama Pemilik Sertifikat</label>
+            <input type="text" id="certificate_owner_name" name="certificate_owner_name" class="form-control" placeholder="m umar ramadhana">
+          </div>
+
           <div class="form-group">
             <label>Nama Sertifikat</label>
             <input type="text" id="certificate_name" name="certificate_name" class="form-control" placeholder="workshop html dasar">
@@ -52,19 +55,6 @@
           </div>
         </div>
       </div>
-
-      <div class="box box-primary">
-        <div class="box-header">
-          <h3 class="box-title">Masukkan Data Pemilik</h3>
-        </div>
-
-        <div class="box-body">
-          <div class="form-group">
-            <label>Nama</label>
-            <input type="text" id="certificate_owner_name" name="certificate_owner_name" class="form-control" placeholder="m umar ramadhana">
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="col-md-8">
@@ -86,9 +76,16 @@
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- </form> -->
-
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <h3 class="box-title">Hasil Sertifikat</h3>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -118,13 +115,29 @@
     var output = certificate_secret_data.split("|");
     output = GibberishAES.dec(output[0], output[1]);
 
-    console.log(certificate_data_json);
-    console.log(certificate_data_json_512hash);
-    console.log(certificate_data_json_enc);
-    console.log(certificate_data_json_dec);
     console.log(certificate_secret_data);
     console.log(output);
+  }
 
-
+  function write_data_to_image(){
+      $("#resultimg").hide();
+      $("#resultimg").attr('src','');
+      $("#result").html('Processing...');
+      function writefunc(){
+          var selectedVal = '';
+          var selected = $("input[type='radio'][name='mode']:checked");
+          if (selected.length > 0) {
+              selectedVal = selected.val();
+          }
+          var t = writeMsgToCanvas('canvas',$("#msg").val(),$("#pass").val(),selectedVal);
+          if(t!=null){
+              var myCanvas = document.getElementById("canvas");
+              var image = myCanvas.toDataURL("image/png");
+              $("#resultimg").attr('src',image);
+              $("#result").html('Success! Save the result image below and send it to others!');
+              $("#resultimg").show();
+          }
+      }
+      loadIMGtoCanvas('file','canvas',writefunc,500);
   }
 </script>
