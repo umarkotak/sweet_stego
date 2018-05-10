@@ -106,18 +106,22 @@
           $("#result").val(certificate_data);
           console.log(certificate_data)
 
-          var output = certificate_data.split("|");
-          output = GibberishAES.dec(output[0], output[1].split("").reverse().join(""));
-          var certificate = JSON.parse(output);
+          if (certificate_data.includes("|")) {
+            var output = certificate_data.split("|");
+            output = GibberishAES.dec(output[0], output[1].split("").reverse().join(""));
+            var certificate = JSON.parse(output);
 
-          $("#certificate_name").val(certificate.certificate_name);
-          $("#certificate_publisher").val(certificate.certificate_publisher);
-          $("#certificate_date_published").val(certificate.certificate_date_published);
-          $("#certificate_number").val(certificate.certificate_number);
-          $("#certificate_additional_information").val(certificate.certificate_additional_information);
-          $("#certificate_owner_name").val(certificate.certificate_owner_name);
+            $("#certificate_name").val(certificate.certificate_name);
+            $("#certificate_publisher").val(certificate.certificate_publisher);
+            $("#certificate_date_published").val(certificate.certificate_date_published);
+            $("#certificate_number").val(certificate.certificate_number);
+            $("#certificate_additional_information").val(certificate.certificate_additional_information);
+            $("#certificate_owner_name").val(certificate.certificate_owner_name);
 
-          console.log(output);
+            console.log(output);
+          } else {
+            console.log("fake");
+          }
 
       }else $("#result").val('Data tidak ditemukan');
 
