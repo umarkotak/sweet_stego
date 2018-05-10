@@ -14,5 +14,71 @@
 <section class="content">
   <div class="row">
 
+    <form>
+
+    <div class="col-md-4">
+      <div class="box box-primary">
+        <div class="box-header">
+          <h3 class="box-title">Masukkan Data Sertifikat</h3>
+        </div>
+
+        <div class="box-body">
+          <div class="form-group">
+            <label>Nama Sertifikat</label>
+            <input type="text" id="certificate_name" name="certificate_name" class="form-control" placeholder="workshop html dasar">
+          </div>
+
+          <div class="form-group">
+            <label>Penerbit Sertifikat</label>
+            <input type="text" id="certificate_publisher" name="certificate_publisher" class="form-control" placeholder="lab dasar stt pln">
+          </div>
+
+          <div class="form-group">
+            <label>Tanggal Terbit Sertifikat</label>
+            <input type="date" id="certificate_date_published" name="certificate_date_published" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>Nomor Sertifikat</label>
+            <input type="text" id="certificate_number" name="certificate_number" class="form-control" placeholder="201701">
+          </div>
+
+          <div class="form-group">
+            <label>Informasi Tambahan</label>
+            <textarea id="certificate_information" name="certificate_information" class="form-control" rows="4" placeholder="sertifikat workshop html lab dasar"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="box box-primary">
+        <div class="box-header">
+          <h3 class="box-title">Masukkan Data Pemilik</h3>
+        </div>
+
+        <div class="box-body">
+          <div class="form-group">
+            <label>Nama</label>
+            <input type="text" id="owner_name" name="owner_name" class="form-control" placeholder="m umar ramadhana">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="box box-primary">
+        <div class="box-header">
+        </div>
+
+        <div class="box-body">
+          <div class="form-group">
+            <label>Upload Gambar Sertifikat</label>
+            <input type="file" id="certificate_image" name="certificate_image" class="form-control">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </form>
+
   </div>
 </section>
