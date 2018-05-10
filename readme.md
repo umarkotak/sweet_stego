@@ -1,12 +1,19 @@
-# Admin LTE Template #
-Sandbox - Tempat melakukan berbagai eksperimen untuk belajar, dengan template AdminLTE sekaligus mempermudah tampilan
+# Sweet Stego #
+A steganography application that will protect your certificate with certain data
 
 ---
 
-### JS 1 - Steganograph ###
-penggunaan library steganograph, untuk menyisipkan pesan kedalam gambar dengan teknik steganografi dan ocs, menerapkan enkripsi AES sebelum pesan dimasukkan kedalam gambar. terdapat set password untuk pelindung pesan dalam gambar
+### Protect Certificate ###
+Proses pemasukan data kepimilikan sertifikat ke dalam gambar sertifikat
 
 ---
 
-### JS 2 - Canvas Exercise ###
-alur : Pilih gambar -> Klik load ->
+### Check Certificate ###
+Proses pembacaan data rahasia yang ada di dalam sertifikat
+
+---
+
+### Features ###
+1. AES Encryption
+2. SHA 512
+3. Least Significant Bit Steganography
