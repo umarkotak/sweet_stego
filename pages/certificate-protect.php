@@ -67,7 +67,7 @@
             <label>Upload Gambar Sertifikat</label>
             <p>Gambar sertifikat yang diupload akan di resize menjadi 800 x 450 pixels,</p>
             <input type="file" accept="image/*" id="certificate_image" name="certificate_image" onchange="preview_image(event)" class="form-control">
-            <img id="preview_certificate_image" width="100%" class="image">
+            <img id="preview_certificate_image" width="100%" class="img-thumbnail">
           </div>
 
           <div id="div_confirmation" class="form-group">
@@ -79,14 +79,24 @@
   </div>
 
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-4">
       <div class="box box-primary">
         <div class="box-header">
           <h3 class="box-title">Hasil Sertifikat</h3>
         </div>
 
         <div class="box-body">
-          <div id="result" style="background-color: rgba(0,255,0,0.3); padding: 10px 10px 10px 10px;">Silahkan validasi kembali data yang anda masukkan. . .</div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="box box-primary">
+        <div class="box-header">
+        </div>
+
+        <div class="box-body">
+          <div id="result" style="background-color: rgba(0,255,0,0.3); padding: 10px 10px 10px 10px;" hidden></div>
           <div style="height: 455px;">
             <img src="" id="certificate_final_image" width="800" height="400" class="img-thumbnail">
           </div>
@@ -117,10 +127,10 @@
     var certificate_data_json_512hash = sha512(certificate_data_json);
     var certificate_data_json_enc = GibberishAES.enc(certificate_data_json, certificate_data_json_512hash);
     var certificate_data_json_dec = GibberishAES.dec(certificate_data_json_enc, certificate_data_json_512hash);
-    var certificate_secret_data = certificate_data_json_enc + "|" + certificate_data_json_512hash;
+    var certificate_secret_data = certificate_data_json_enc + "|" + certificate_data_json_512hash.split("").reverse().join("");
 
     var output = certificate_secret_data.split("|");
-    output = GibberishAES.dec(output[0], output[1]);
+    output = GibberishAES.dec(output[0], output[1].split("").reverse().join(""));
 
     console.log(certificate_secret_data);
     console.log(output);
@@ -131,23 +141,19 @@
   function write_data_to_image(certificate_secret_data){
     $("#certificate_final_image").hide();
     $("#certificate_final_image").attr('src','');
-    $("#result").html('Processing...');
+    $("#result").html('Sedang mengolah gambar sertifikat . . .');
     function writefunc(){
-      // var selectedVal = '';
-      // var selected = $("input[type='radio'][name='mode']:checked");
-      // if (selected.length > 0) {
-      //     selectedVal = selected.val();
-      // }
       var t = writeMsgToCanvas('canvas',certificate_secret_data,"default",0);
       if(t!=null){
         var myCanvas = document.getElementById("canvas");
         var image = myCanvas.toDataURL("image/png");
         $("#certificate_final_image").attr('src',image);
-        $("#result").html('Success! Save the result image below and send it to others!');
+        $("#result").html('Data rahasia berhasil disisipkan, Silahkan save gambar di bawah ini kedalam perangkat anda.');
+        $("#result").show();
         $("#certificate_final_image").show();
       }
     }
-    loadIMGtoCanvas('certificate_image','canvas',writefunc,500);
+    loadIMGtoCanvas('certificate_image','canvas',writefunc,900);
     console.log("finished");
   }
 </script>

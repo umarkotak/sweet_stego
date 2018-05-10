@@ -105,25 +105,25 @@ function writeIMG(){
 }
 
 function readIMG(){
-    $("#resultimg").hide();
-    $("#result").html('Processing...');
-    function readfunc(){
-        var selectedVal = '';
-        var selected = $("input[type='radio'][name='mode']:checked");
-        if (selected.length > 0) {
-            selectedVal = selected.val();
-        }
-        var t= readMsgFromCanvas('canvas',$("#pass").val(),selectedVal);
-        if(t!=null){
-            t=t.split('&').join('&amp;');
-            t=t.split(' ').join('&nbsp;');
-            t=t.split('<').join('&lt;');
-            t=t.split('>').join('&gt;');
-            t=t.replace(/(?:\r\n|\r|\n)/g, '<br />');
-            $("#result").html(t);
-        }else $("#result").html('ERROR REAVEALING MESSAGE!');
-
+  $("#resultimg").hide();
+  $("#result").html('Processing...');
+  function readfunc(){
+    var selectedVal = '';
+    var selected = $("input[type='radio'][name='mode']:checked");
+    if (selected.length > 0) {
+        selectedVal = selected.val();
     }
-    loadIMGtoCanvas('file','canvas',readfunc);
+    var t= readMsgFromCanvas('canvas',$("#pass").val(),selectedVal);
+    if(t!=null){
+        t=t.split('&').join('&amp;');
+        t=t.split(' ').join('&nbsp;');
+        t=t.split('<').join('&lt;');
+        t=t.split('>').join('&gt;');
+        t=t.replace(/(?:\r\n|\r|\n)/g, '<br />');
+        $("#result").html(t);
+    }else $("#result").html('ERROR REAVEALING MESSAGE!');
+
+  }
+  loadIMGtoCanvas('file','canvas',readfunc);
 }
 </script>
