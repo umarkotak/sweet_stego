@@ -84,6 +84,13 @@
         <div class="box-header">
           <h3 class="box-title">Hasil Sertifikat</h3>
         </div>
+
+        <div class="box-body">
+          <div id="result" style="background-color: rgba(0,255,0,0.3); padding: 10px 10px 10px 10px;">Silahkan validasi kembali data yang anda masukkan. . .</div>
+          <div style="height: 455px;">
+            <img src="" id="certificate_final_image" width="800" height="400" class="img-thumbnail">
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -117,27 +124,30 @@
 
     console.log(certificate_secret_data);
     console.log(output);
+
+    write_data_to_image(certificate_secret_data);
   }
 
-  function write_data_to_image(){
-      $("#resultimg").hide();
-      $("#resultimg").attr('src','');
-      $("#result").html('Processing...');
-      function writefunc(){
-          var selectedVal = '';
-          var selected = $("input[type='radio'][name='mode']:checked");
-          if (selected.length > 0) {
-              selectedVal = selected.val();
-          }
-          var t = writeMsgToCanvas('canvas',$("#msg").val(),$("#pass").val(),selectedVal);
-          if(t!=null){
-              var myCanvas = document.getElementById("canvas");
-              var image = myCanvas.toDataURL("image/png");
-              $("#resultimg").attr('src',image);
-              $("#result").html('Success! Save the result image below and send it to others!');
-              $("#resultimg").show();
-          }
+  function write_data_to_image(certificate_secret_data){
+    $("#certificate_final_image").hide();
+    $("#certificate_final_image").attr('src','');
+    $("#result").html('Processing...');
+    function writefunc(){
+      // var selectedVal = '';
+      // var selected = $("input[type='radio'][name='mode']:checked");
+      // if (selected.length > 0) {
+      //     selectedVal = selected.val();
+      // }
+      var t = writeMsgToCanvas('canvas',certificate_secret_data,"default",0);
+      if(t!=null){
+        var myCanvas = document.getElementById("canvas");
+        var image = myCanvas.toDataURL("image/png");
+        $("#certificate_final_image").attr('src',image);
+        $("#result").html('Success! Save the result image below and send it to others!');
+        $("#certificate_final_image").show();
       }
-      loadIMGtoCanvas('file','canvas',writefunc,500);
+    }
+    loadIMGtoCanvas('certificate_image','canvas',writefunc,500);
+    console.log("finished");
   }
 </script>
