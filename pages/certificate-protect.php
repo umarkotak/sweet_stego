@@ -111,12 +111,20 @@
 
     var certificate_data_json = JSON.stringify(certificate_data);
     var certificate_data_json_512hash = sha512(certificate_data_json);
-    var certificate_data_json_512hash_enc = GibberishAES.enc(certificate_data_json, certificate_data_json_512hash);
-    var certificate_data_json_512hash_dec = GibberishAES.dec(certificate_data_json_512hash_enc, certificate_data_json_512hash);
+    var certificate_data_json_enc = GibberishAES.enc(certificate_data_json, certificate_data_json_512hash);
+    var certificate_data_json_dec = GibberishAES.dec(certificate_data_json_enc, certificate_data_json_512hash);
+    var certificate_secret_data = certificate_data_json_enc + "|" + certificate_data_json_512hash;
+
+    var output = certificate_secret_data.split("|");
+    output = GibberishAES.dec(output[0], output[1]);
 
     console.log(certificate_data_json);
     console.log(certificate_data_json_512hash);
-    console.log(certificate_data_json_512hash_enc);
-    console.log(certificate_data_json_512hash_dec);
+    console.log(certificate_data_json_enc);
+    console.log(certificate_data_json_dec);
+    console.log(certificate_secret_data);
+    console.log(output);
+
+
   }
 </script>
