@@ -98,8 +98,8 @@
 
         <div class="box-body">
           <div id="result" style="background-color: rgba(0,255,0,0.3); padding: 10px 10px 10px 10px;" hidden></div>
-          <div style="height: 455px;">
-            <img src="" id="certificate_final_image" width="800" height="400" class="img-thumbnail">
+          <div style="height: 460px;">
+            <img src="" id="certificate_final_image" width="800" height="450" class="img-thumbnail">
           </div>
         </div>
       </div>
