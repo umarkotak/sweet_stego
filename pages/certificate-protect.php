@@ -136,27 +136,7 @@
     console.log(certificate_secret_data);
     console.log(output);
 
-    // write_data_to_image(certificate_secret_data);
     write_data_to_image_clean(certificate_secret_data);
-  }
-
-  function write_data_to_image(certificate_secret_data){
-    $("#certificate_final_image").hide();
-    $("#certificate_final_image").attr('src','');
-    $("#result").html('Sedang mengolah gambar sertifikat . . .');
-    function writefunc(){
-      var t = writeMsgToCanvas('canvas',certificate_secret_data,"default",0);
-      if(t!=null){
-        var myCanvas = document.getElementById("canvas");
-        var image = myCanvas.toDataURL("image/png");
-        $("#certificate_final_image").attr('src',image);
-        $("#result").html('Data rahasia berhasil disisipkan, Silahkan save gambar di bawah ini kedalam perangkat anda.');
-        $("#result").show();
-        $("#certificate_final_image").show();
-      }
-    }
-    loadIMGtoCanvas('certificate_image','canvas',writefunc,900);
-    console.log("finished");
   }
 
   function write_data_to_image_clean(certificate_secret_data){
@@ -174,7 +154,7 @@
         $("#certificate_final_image").show();
       }
     }
-    loadIMGtoCanvas('certificate_image','canvas',writefunc,900,170);
+    loadIMGtoCanvas('certificate_image','canvas',writefunc,850,170);
     console.log("finished");
   }
 </script>

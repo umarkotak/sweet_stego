@@ -175,4 +175,3 @@
 
 </script>
 
-<!-- {"certificate_name":"workshop uml","certificate_publisher":"lab lanjut stt pln","certificate_date_published":"2015-05-15","certificate_number":"201501","certificate_additional_information":"sertifikat uml di lab lanjut stt pln, peserta dengan hasil baik","certificate_owner_name":"m umar ramadhana"} -->
