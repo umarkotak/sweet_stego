@@ -136,6 +136,7 @@
     console.log(certificate_secret_data);
     console.log(output);
 
+    // write_data_to_image(certificate_secret_data);
     write_data_to_image_clean(certificate_secret_data);
   }
 
