@@ -139,7 +139,7 @@
   function read_data_from_image_clean(){
     $("#result").html('Processing...');
     function readfunc(){
-      var certificate_data = readMsgFromCanvas('canvas',"default",0);
+      var certificate_data = readMsgFromCanvas('canvas',"default");
 
       if(certificate_data != null){
           $("#result").val(certificate_data);
@@ -170,7 +170,7 @@
       }else $("#result").val('Data tidak ditemukan');
 
     }
-    loadIMGtoCanvas('certificate_image','canvas',readfunc, 900, 170);
+    loadIMGtoCanvas('certificate_image','canvas',readfunc);
   }
 
 </script>

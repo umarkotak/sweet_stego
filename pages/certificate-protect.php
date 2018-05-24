@@ -133,8 +133,8 @@
     var output = certificate_secret_data.split("|");
     output = GibberishAES.dec(output[0], output[1].split("").reverse().join(""));
 
-    console.log(certificate_secret_data);
-    console.log(output);
+    console.log("Certificate secret data : \n", certificate_secret_data);
+    console.log("Certificate raw data : \n", output);
 
     write_data_to_image_clean(certificate_secret_data);
   }
@@ -144,7 +144,7 @@
     $("#certificate_final_image").attr('src','');
     $("#result").html('Sedang mengolah gambar sertifikat . . .');
     function writefunc(){
-      var t = writeMsgToCanvas('canvas',certificate_secret_data,"default",0);
+      var t = writeMsgToCanvas('canvas',certificate_secret_data,"default");
       if(t!=null){
         var myCanvas = document.getElementById("canvas");
         var image = myCanvas.toDataURL("image/png");
