@@ -1,7 +1,7 @@
 <header class="main-header">
   <a href="index.php" class="logo">
     <span class="logo-mini"><b>C</b>P</span>
-    <span class="logo-lg"><b>Certi</b>Tect</span>
+    <span class="logo-lg"><b>Certi</b>Tect - base v1</span>
   </a>
 
   <nav class="navbar navbar-static-top">
