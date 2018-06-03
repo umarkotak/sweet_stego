@@ -108,8 +108,8 @@
           $("#result").val(certificate_data);
           console.log(certificate_data)
 
-          if (certificate_data.includes("|")) {
-            var output = certificate_data.split("|");
+          if (certificate_data.includes("0|")) {
+            var output = certificate_data.split("0|");
 
             try {
               output = GibberishAES.dec(output[0], output[1].split("").reverse().join(""));
