@@ -1,6 +1,6 @@
 <!-- <script src="lib/cryptostego.js"></script> -->
 <script src="lib/cleanstego.js"></script>
-<script src="lib/crypto/sha512v2.js"></script>
+<script src="lib/crypto/sha512v3.js"></script>
 <script src="lib/crypto/aes.js"></script>
 
 <!-- Content Header (Page header) -->
@@ -87,7 +87,10 @@
         </div>
 
         <div class="box-body">
-
+          <div class="form-group">
+            <label>Pesan : </label>
+            <textarea id="raw_message" class="form-control" rows="4" readonly></textarea>
+          </div>
         </div>
       </div>
     </div>
@@ -99,7 +102,50 @@
         <div class="box-body">
           <div id="result" style="background-color: rgba(0,255,0,0.3); padding: 10px 10px 10px 10px;" hidden></div>
           <div style="height: 460px;">
-            <img src="" id="certificate_final_image" width="800" height="450" class="img-thumbnail">
+            <img src="" id="certificate_final_image" class="img-thumbnail">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="display: block">
+    <div class="col-md-6">
+      <div class="box box-primary">
+        <div class="box-header">
+          <h3 class="box-title">Log Sertifikat Sebelum Steganografi</h3>
+        </div>
+
+        <div class="box-body">
+          <div id="log-before">
+            <div class="form-group">
+              <label>Tahap 1 : Enkripsi Pesan</label><br>
+
+              <label>Pesan Asli : </label>
+              <textarea id="log_before_raw_message" class="form-control" rows="4" readonly></textarea>
+
+              <label>Pre processing : </label>
+              <textarea id="log_before_pre_processing" class="form-control" rows="3" readonly></textarea>
+
+              <label>Hasil Enkripsi sha512 : </label>
+              <textarea id="log_before_message_encrypted_by_sha512" class="form-control" rows="4" readonly></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="box box-primary">
+        <div class="box-header">
+          <h3 class="box-title">Log Sertifikat Sesudah Steganografi</h3>
+        </div>
+
+        <div class="box-body">
+          <div id="log-after">
+            <div class="form-group">
+              <label>Informasi Tambahan</label>
+              <textarea id="certificate_additional_information" name="certificate_additional_information" class="form-control" rows="4" placeholder="sertifikat workshop html lab dasar"></textarea>
+            </div>
           </div>
         </div>
       </div>
@@ -125,7 +171,7 @@
     certificate_data["certificate_owner_name"] = $("#certificate_owner_name").val();
 
     var certificate_data_json = JSON.stringify(certificate_data);
-    var certificate_data_json_512hash = sha512(certificate_data_json);
+    var certificate_data_json_512hash = Sha512.hash(certificate_data_json);
     var certificate_data_json_enc = GibberishAES.enc(certificate_data_json, certificate_data_json_512hash);
     var certificate_data_json_dec = GibberishAES.dec(certificate_data_json_enc, certificate_data_json_512hash);
     var certificate_secret_data = certificate_data_json_enc + "|" + certificate_data_json_512hash.split("").reverse().join("");
@@ -135,6 +181,10 @@
 
     console.log("Certificate secret data : \n", certificate_secret_data);
     console.log("Certificate raw data : \n", output);
+
+    $("#raw_message").val(certificate_data_json);
+    $("#log_before_raw_message").val(certificate_data_json);
+    $("#log_before_message_encrypted_by_sha512").val(certificate_data_json_512hash);
 
     write_data_to_image_clean(certificate_secret_data);
   }

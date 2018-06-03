@@ -1,6 +1,6 @@
 <!-- <script src="lib/cryptostego.js"></script> -->
 <script src="lib/cleanstego.js"></script>
-<script src="lib/crypto/sha512v2.js"></script>
+<script src="lib/crypto/sha512v3.js"></script>
 <script src="lib/crypto/aes.js"></script>
 
 <!-- Content Header (Page header) -->
