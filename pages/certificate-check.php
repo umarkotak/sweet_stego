@@ -1,6 +1,6 @@
 <!-- <script src="lib/cryptostego.js"></script> -->
 <script src="lib/cleanstego.js"></script>
-<script src="lib/crypto/sha512v2.js"></script>
+<script src="lib/crypto/sha512v3.js"></script>
 <script src="lib/crypto/aes.js"></script>
 
 <!-- Content Header (Page header) -->
@@ -108,8 +108,8 @@
           $("#result").val(certificate_data);
           console.log(certificate_data)
 
-          if (certificate_data.includes("|")) {
-            var output = certificate_data.split("|");
+          if (certificate_data.includes("0|")) {
+            var output = certificate_data.split("0|");
 
             try {
               output = GibberishAES.dec(output[0], output[1].split("").reverse().join(""));
@@ -139,7 +139,7 @@
   function read_data_from_image_clean(){
     $("#result").html('Processing...');
     function readfunc(){
-      var certificate_data = readMsgFromCanvas('canvas',"default",0);
+      var certificate_data = readMsgFromCanvas('canvas',"default");
 
       if(certificate_data != null){
           $("#result").val(certificate_data);
@@ -170,7 +170,7 @@
       }else $("#result").val('Data tidak ditemukan');
 
     }
-    loadIMGtoCanvas('certificate_image','canvas',readfunc, 900, 170);
+    loadIMGtoCanvas('certificate_image','canvas',readfunc);
   }
 
 </script>
