@@ -1,7 +1,7 @@
-<!-- <script src="lib/cryptostego.js"></script> -->
 <script src="lib/cleanstego.js"></script>
 <script src="lib/crypto/sha512v3.js"></script>
 <script src="lib/crypto/aes.js"></script>
+<script src="lib/crypto/aesctr.js"></script>
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -170,21 +170,16 @@
 
   function protect_certificate() {
     var certificate_data = {};
-    certificate_data["certificate_name"] = $("#certificate_name").val();
-    certificate_data["certificate_publisher"] = $("#certificate_publisher").val();
-    certificate_data["certificate_date_published"] = $("#certificate_date_published").val();
-    certificate_data["certificate_number"] = $("#certificate_number").val();
-    certificate_data["certificate_additional_information"] = $("#certificate_additional_information").val();
-    certificate_data["certificate_owner_name"] = $("#certificate_owner_name").val();
+    initiate_data(certificate_data);
 
     var certificate_data_json = JSON.stringify(certificate_data);
     var certificate_data_json_512hash = Sha512.hash(certificate_data_json);
-    var certificate_data_json_enc = GibberishAES.enc(certificate_data_json, certificate_data_json_512hash);
-    var certificate_data_json_dec = GibberishAES.dec(certificate_data_json_enc, certificate_data_json_512hash);
-    var certificate_secret_data = certificate_data_json_enc + "0|" + certificate_data_json_512hash.split("").reverse().join("");
+    var certificate_data_json_aes_enc = AesCtr.encrypt(certificate_data_json, certificate_data_json_512hash, 256);
+    var certificate_data_json_dec = AesCtr.decrypt(certificate_data_json_aes_enc, certificate_data_json_512hash, 256);
+    var certificate_secret_data = certificate_data_json_aes_enc + "0|" + certificate_data_json_512hash.split("").reverse().join("");
 
     var output = certificate_secret_data.split("0|");
-    output = GibberishAES.dec(output[0], output[1].split("").reverse().join(""));
+    output = AesCtr.decrypt(output[0], output[1].split("").reverse().join(""), 256);
 
     var message_spesification = {};
     message_spesification["panjang_pesan"] = certificate_secret_data.length;
@@ -196,10 +191,10 @@
     $("#log_before_message_encrypted_by_aes").val(certificate_secret_data);
     $("#log_before_message_spesification").val(JSON.stringify(message_spesification));
 
-    write_data_to_image_clean(certificate_secret_data);
+    write_data_to_image(certificate_secret_data);
   }
 
-  function write_data_to_image_clean(certificate_secret_data){
+  function write_data_to_image(certificate_secret_data) {
     $("#certificate_final_image").hide();
     $("#certificate_final_image").attr('src','');
     $("#result").html('Sedang mengolah gambar sertifikat . . .');
@@ -216,6 +211,19 @@
     }
     loadIMGtoCanvas('certificate_image','canvas',writefunc,850,170);
     console.log("finished");
+  }
+
+  function initiate_data(certificate_data) {
+    certificate_data["certificate_name"] = $("#certificate_name").val();
+    certificate_data["certificate_publisher"] = $("#certificate_publisher").val();
+    certificate_data["certificate_date_published"] = $("#certificate_date_published").val();
+    certificate_data["certificate_number"] = $("#certificate_number").val();
+    certificate_data["certificate_additional_information"] = $("#certificate_additional_information").val();
+    certificate_data["certificate_owner_name"] = $("#certificate_owner_name").val();
+  }
+
+  function encrypt_data(certificate_data) {
+
   }
 
 </script>
