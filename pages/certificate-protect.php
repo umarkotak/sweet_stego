@@ -137,7 +137,6 @@
               <textarea id="log_before_message_in_binary" class="form-control" rows="6" readonly></textarea>
 
               <br><br><label>Tahap 2 : Penyisipan Pesan</label><br>
-              
             </div>
           </div>
         </div>
