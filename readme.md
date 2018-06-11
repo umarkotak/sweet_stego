@@ -25,3 +25,10 @@ Kemudian dienkripsi kembali dengan AES dan key berasal dari SHA512 yang dibalik
 2. SHA 512
 3. Least Significant Bit Steganography
 4. Encrypt 800 x 450 pixels
+
+### Processess ###
+- Upload gambar
+- Masukkan pesan dan password
+- Set ukuran canvas X x Y dan topData
+- Pembuatan canvas berdasarkan gambar sehingga mendapat 2d context
+- Pengecekkan panjang pesan * 8 > size gambar / 4 * 3
