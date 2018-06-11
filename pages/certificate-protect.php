@@ -113,30 +113,33 @@
     <div class="col-md-6">
       <div class="box box-primary">
         <div class="box-header">
-          <h3 class="box-title">Log Sertifikat Sebelum Steganografi</h3>
+          <h3 class="box-title">Tahap Proses Steganografi Citra</h3>
         </div>
 
         <div class="box-body">
           <div id="log-before">
             <div class="form-group">
-              <label>Tahap 1 : Enkripsi Pesan</label><br>
+              <label>Tahap 1 : Enkripsi Pesan</label><br><hr>
 
               <label>Pesan Asli : </label>
               <textarea id="log_before_raw_message" class="form-control" rows="4" readonly></textarea>
+              <hr>
 
               <label>Hasil Enkripsi sha512 : </label>
               <textarea id="log_before_message_encrypted_by_sha512" class="form-control" rows="4" readonly></textarea>
+              <hr>
 
               <label>Hasil Enkripsi AES dengan Kunci sha512</label>
               <textarea id="log_before_message_encrypted_by_aes" class="form-control" rows="4" readonly></textarea>
+              <hr>
 
               <label>Spesifikasi Pesan</label>
               <textarea id="log_before_message_spesification" class="form-control" rows="1" readonly></textarea>
+              <hr>
 
               <label>Pesan dalam bentuk ASCII dan Biner</label>
               <textarea id="log_before_message_in_binary" class="form-control" rows="6" readonly></textarea>
-
-              <br><br><label>Tahap 2 : Penyisipan Pesan</label><br>
+              <hr>
             </div>
           </div>
         </div>
@@ -145,13 +148,33 @@
     <div class="col-md-6">
       <div class="box box-primary">
         <div class="box-header">
-          <h3 class="box-title">Log Sertifikat Sesudah Steganografi</h3>
+          <h3 class="box-title"></h3>
         </div>
 
         <div class="box-body">
           <div id="log-after">
             <div class="form-group">
-              <label>Data Warna Tiap Pixel</label>
+              <label>Tahap 2 : Penyisipan Pesan</label><br><hr>
+
+              <label>Spesifikasi Gambar</label>
+              <textarea id="log_before_image_spesification" class="form-control" rows="3" readonly></textarea>
+              <hr>
+
+              <label>Nilai setiap pixel pada gambar sebelum penyisipan</label>
+              <textarea id="log_before_image_data" class="form-control" rows="10" readonly></textarea>
+              <hr>
+
+              <label>Nilai mapping penyimpanan pesan</label>
+              <textarea id="log_after_valid_pixels" class="form-control" rows="3" readonly></textarea>
+              <hr>
+
+              <label>Data nilai map diurut secara ascending</label>
+              <textarea id="log_after_valid_pixels_asc" class="form-control" rows="3" readonly></textarea>
+              <hr>
+
+              <label>Nilai setiap pixel pada gambar sesudah penyisipan</label>
+              <textarea id="log_after_image_data" class="form-control" rows="10" readonly></textarea>
+              <hr>
             </div>
           </div>
         </div>
