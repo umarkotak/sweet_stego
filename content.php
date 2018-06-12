@@ -14,6 +14,13 @@ if (isset($_GET['page'])) {
   else if ($page == 'js3')                                       { include "pages/js-3.php"; }
   else if ($page == 'sandbox')                                   { include "pages/sandbox.php"; }
   else                                                           { include "pages/notfound.php"; }
+
+} else if (isset($_GET['action'])) {
+  $action = $_GET['action'];
+
+  if ($action == 'post_publish_certificate') { include "action/post_publish_certificate.php"; }
+  else if ($action == 'post_upload_certificate') { include "action/post_upload_certificate.php"; }
+
 } else {
   include "pages/dashboard.php";
 }

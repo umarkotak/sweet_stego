@@ -17,7 +17,10 @@
 
 <!-- Main content -->
 <section class="content">
-  <div class="row">
+  <div id="result" style="background-color: rgba(0,255,0,0.3); padding: 10px 10px 10px 10px;" hidden></div>
+
+  <form method="post" action="?action=post_publish_certificate" enctype="multipart/form-data">
+  <div id="row_input" class="row" style="display: block;">
     <div class="col-md-4">
       <div class="box box-primary">
         <div class="box-header">
@@ -72,14 +75,14 @@
           </div>
 
           <div id="div_confirmation" class="form-group">
-            <button id="btn_protect_certificate" name="btn_protect_certificate" onclick="protect_certificate()" class="btn btn-success pull-right">Protect Certificate</button>
+            <button type="button" id="btn_protect_certificate" onclick="protect_certificate()" class="btn btn-success pull-right">Protect Certificate</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="row">
+  <div id="row_result" class="row" style="display: block;">
     <div class="col-md-4">
       <div class="box box-primary">
         <div class="box-header">
@@ -104,18 +107,21 @@
         </div>
 
         <div class="box-body">
-          <div id="result" style="background-color: rgba(0,255,0,0.3); padding: 10px 10px 10px 10px;" hidden></div>
           <div style="height: 460px;">
             <img src="" id="certificate_final_image" class="img-thumbnail">
           </div>
-          <a id="btn_publish_certificate" name="btn_publish_certificate" href="#" onclick="this.href = $('#certificate_final_image').attr('src');"  class="btn btn-success pull-right" style="display: none;" download>Publish Certificate</a>
+
+          <input type="hidden" id="base64_certificate" name="base64_certificate">
+
+          <button type="submit" id="btn_publish_certificate" class="btn btn-success pull-right" style="display: none;">Publish Certificate</button>
           <a id="btn_download_certificate" name="btn_download_certificate" href="#" onclick="this.href = $('#certificate_final_image').attr('src');"  class="btn btn-success pull-right" style="display: none;" download>Download Certificate</a>
         </div>
       </div>
     </div>
   </div>
+  </form>
 
-  <div class="row" style="display: block">
+  <div id="row_process" class="row" style="display: block">
     <div class="col-md-6">
       <div class="box box-primary">
         <div class="box-header">
@@ -218,6 +224,7 @@
   function write_data_to_image(certificate_secret_data) {
     $("#certificate_final_image").hide();
     $("#certificate_final_image").attr('src','');
+    $("#result").show();
     $("#result").html('Sedang mengolah gambar sertifikat . . .');
     function writefunc(){
       var t = writeMsgToCanvas('canvas',certificate_secret_data,"default");
@@ -226,12 +233,12 @@
         var image = myCanvas.toDataURL("image/png");
         $("#certificate_final_image").attr('src',image);
         $("#result").html('Data rahasia berhasil disisipkan, Silahkan save gambar di bawah ini kedalam perangkat anda.');
-        $("#result").show();
-        $("#certificate_final_image").show();
-        $("#btn_download_certificate").show();
+        show_blocks();
+        modify_original_file_content(image);
       }
     }
     loadIMGtoCanvas('certificate_image','canvas',writefunc,850,170);
+
     console.log("finished");
   }
 
@@ -256,6 +263,20 @@
     data["output"] = data["certificate_secret_data"].split("0|");
     data["output"] = AesCtr.decrypt(data["output"][0], data["output"][1].split("").reverse().join(""), 256);
     return data;
+  }
+
+  function show_blocks() {
+    $("#row_input").css({"display": "none"});
+    $("#row_result").show();
+    $("#row_process").show();
+
+    $("#certificate_final_image").show();
+    $("#btn_publish_certificate").show();
+    $("#btn_download_certificate").show();
+  }
+
+  function modify_original_file_content(image) {
+    $("#base64_certificate").val(image);
   }
 
 </script>
