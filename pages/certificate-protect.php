@@ -90,6 +90,10 @@
           <div class="form-group">
             <label>Pesan : </label>
             <textarea id="raw_message" class="form-control" rows="4" readonly></textarea>
+            <hr>
+
+            <label>Pesan Terenkripsi : </label>
+            <textarea id="encrypted_message" class="form-control" rows="4" readonly></textarea>
           </div>
         </div>
       </div>
@@ -104,6 +108,8 @@
           <div style="height: 460px;">
             <img src="" id="certificate_final_image" class="img-thumbnail">
           </div>
+          <a id="btn_publish_certificate" name="btn_publish_certificate" href="#" onclick="this.href = $('#certificate_final_image').attr('src');"  class="btn btn-success pull-right" style="display: none;" download>Publish Certificate</a>
+          <a id="btn_download_certificate" name="btn_download_certificate" href="#" onclick="this.href = $('#certificate_final_image').attr('src');"  class="btn btn-success pull-right" style="display: none;" download>Download Certificate</a>
         </div>
       </div>
     </div>
@@ -203,6 +209,7 @@
     $("#log_before_raw_message").val(processed_certificate_data["certificate_data_json"]);
     $("#log_before_message_encrypted_by_sha512").val(processed_certificate_data["certificate_data_json_512hash"]);
     $("#log_before_message_encrypted_by_aes").val(processed_certificate_data["certificate_secret_data"]);
+    $("#encrypted_message").val(processed_certificate_data["certificate_secret_data"]);
     $("#log_before_message_spesification").val(JSON.stringify(message_spesification));
 
     write_data_to_image(processed_certificate_data["certificate_secret_data"]);
@@ -221,6 +228,7 @@
         $("#result").html('Data rahasia berhasil disisipkan, Silahkan save gambar di bawah ini kedalam perangkat anda.');
         $("#result").show();
         $("#certificate_final_image").show();
+        $("#btn_download_certificate").show();
       }
     }
     loadIMGtoCanvas('certificate_image','canvas',writefunc,850,170);
