@@ -16,7 +16,7 @@
     <div class="col-md-12">
       <div class="box box-primary">
         <div class="box-header">
-          <h3 class="box-title">Data sertifikat</h3>
+          <h3 class="box-title">Data sertifikat diupload</h3>
         </div>
 
         <div class="box-body">

@@ -19,6 +19,7 @@
       <li class="header">EXERCISE</li>
       <li><a href="?page=certificate-protect"><i class="fa fa-shield"></i>Protect Certificate</a></li>
       <li><a href="?page=certificate-check"><i class="fa fa-check-square-o"></i>Check Certificate</a></li>
+      <li><a href="?page=certificate-published"><i class="fa fa-copy"></i>Published Certificate</a></li>
       <li><a href="?page=certificate-manager"><i class="fa fa-list-alt"></i>Certificate Manager</a></li>
       <!-- <li><a href="?page=js0"><i class="fa fa-circle-o"></i> JS 0 - JS Basic</a></li>
       <li><a href="?page=js1"><i class="fa fa-circle-o"></i> JS 1 - Steganograph</a></li>

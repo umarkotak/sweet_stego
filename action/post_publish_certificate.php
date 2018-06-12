@@ -13,7 +13,8 @@ $penerbit_sertifikat = $_POST['certificate_publisher'];
 $tanggal_terbit = $_POST['certificate_date_published'];
 $nomor_sertifikat = $_POST['certificate_number'];
 $informasi_tambahan = $_POST['certificate_additional_information'];
-$link_gambar = $nama_pemilik . "_" . $tanggal_terbit . "_" . $nama_sertifikat . ".png";
+$link_gambar = $nama_pemilik . "-" . $tanggal_terbit . "-" . $nama_sertifikat . ".png";
+$link_gambar = str_replace(" ","_",$link_gambar);
 $base64_certificate = $_POST['base64_certificate'];
 $status = 'published';
 

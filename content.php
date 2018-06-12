@@ -8,6 +8,7 @@ if (isset($_GET['page'])) {
   else if ($page == 'certificate-protect')                       { include "pages/certificate-protect.php"; }
   else if ($page == 'certificate-check')                         { include "pages/certificate-check.php"; }
   else if ($page == 'certificate-manager')                       { include "pages/certificate-manager.php"; }
+  else if ($page == 'certificate-published')                     { include "pages/certificate-published.php"; }
   else if ($page == 'js0')                                       { include "pages/js-0.php"; }
   else if ($page == 'js1')                                       { include "pages/js-1.php"; }
   else if ($page == 'js2')                                       { include "pages/js-2.php"; }
