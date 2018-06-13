@@ -9,7 +9,7 @@ $certificates = $sql->fetchAll();
 <section class="content-header">
   <h1>
     Published Certificate
-    <small>Data sertifikat resmi yang telah di publish</small>
+    <small>Data sertifikat resmi yang telah dipublish</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> Certificate</a></li>
@@ -56,8 +56,8 @@ $certificates = $sql->fetchAll();
                 <td><?php echo $certifacate['informasi_tambahan']; ?></td>
                 <td><img src="images/published_certificate/<?php echo $certifacate['link_gambar']; ?>" class="img-thumbnail" style="width: 120px; height: 70px;"></td>
                 <td><?php echo $certifacate['status']; ?></td>
-                <td width="5%">
-                  <a href="" class="btn btn-success btn-xs">lihat</a>
+                <td>
+                  <a href="images/published_certificate/<?php echo $certifacate['link_gambar']; ?>" class="btn btn-success btn-xs">lihat</a>
                   <a href="" class="btn btn-danger btn-xs">hapus</a>
                 </td>
               </tr>

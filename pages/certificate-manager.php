@@ -1,3 +1,10 @@
+<?php
+$sql = $conn->prepare("SELECT * FROM certificates ORDER BY id DESC");
+$data = Array();
+$sql->execute($data);
+$certificates = $sql->fetchAll();
+?>
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
