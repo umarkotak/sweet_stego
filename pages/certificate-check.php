@@ -17,6 +17,7 @@
 
 <!-- Main content -->
 <section class="content">
+  <form method="post" action="?action=post_upload_certificate" enctype="multipart/form-data">
   <div class="row">
     <div class="col-md-8">
       <div class="box box-primary">
@@ -33,7 +34,7 @@
           </div>
 
           <div id="process_certificate_section" class="form-group" hidden>
-            <button id="btn_check_certificate" name="btn_check_certificate" class="btn btn-success pull-right" onclick="check_certificate()" >Check Certificate</button>
+            <button type="button" id="btn_check_certificate" name="btn_check_certificate" class="btn btn-success pull-right" onclick="check_certificate()" >Check Certificate</button>
           </div>
         </div>
       </div>
@@ -80,10 +81,15 @@
             <label>Result Test Form</label>
             <textarea id="result" name="result" class="form-control" rows="4" readonly></textarea>
           </div>
+
+          <div id="after_check" class="form-group" style="display: none;">
+            <button type="submit" class="btn btn-success pull-right">Verify</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  </form>
 </section>
 
 <script type="text/javascript">
@@ -107,7 +113,7 @@
           $("#result").val(certificate_data);
           console.log(certificate_data)
 
-          if (certificate_data.includes("0")) {
+          if (certificate_data.includes("0|")) {
             var output = certificate_data.split("0|");
 
             try {
@@ -120,6 +126,7 @@
               $("#certificate_number").val(certificate.certificate_number);
               $("#certificate_additional_information").val(certificate.certificate_additional_information);
               $("#certificate_owner_name").val(certificate.certificate_owner_name);
+              $("#after_check").show();
             } catch(e) {
               console.log("Fake, Wrong key");
             }

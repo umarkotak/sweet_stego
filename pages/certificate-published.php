@@ -39,7 +39,7 @@ $certificates = $sql->fetchAll();
                 <th>Informasi Tambahan</th>
                 <th>Gambar</th>
                 <th>Status</th>
-                <th>Aksi</th>
+                <th width="5%">Aksi</th>
               </tr>
             </thead>
 
@@ -54,13 +54,31 @@ $certificates = $sql->fetchAll();
                 <td><?php echo $certifacate['tanggal_terbit']; ?></td>
                 <td><?php echo $certifacate['nomor_sertifikat']; ?></td>
                 <td><?php echo $certifacate['informasi_tambahan']; ?></td>
-                <td><img src="images/published_certificate/<?php echo $certifacate['link_gambar']; ?>" class="img-thumbnail" style="width: 120px; height: 70px;"></td>
+                <td><a data-toggle="modal" data-target="#modal-primary-<?php echo $no; ?>"><img src="images/published_certificate/<?php echo $certifacate['link_gambar']; ?>" class="img-thumbnail" style="width: 120px; height: 70px;"></a></td>
                 <td><?php echo $certifacate['status']; ?></td>
                 <td>
-                  <a href="images/published_certificate/<?php echo $certifacate['link_gambar']; ?>" class="btn btn-success btn-xs">lihat</a>
-                  <a href="" class="btn btn-danger btn-xs">hapus</a>
+                  <a data-toggle="modal" data-target="#modal-primary-<?php echo $no; ?>" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-eye-open"></i>lihat</a>
+                  <a href="?action=get_delete_published_certificate&id=<?php echo $certifacate['id']; ?>" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapus sertifikat ini?')"><i class="glyphicon glyphicon-trash"></i>hapus</a>
                 </td>
               </tr>
+
+              <div class="modal modal-primary fade" id="modal-primary-<?php echo $no; ?>">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title">Sertifikat <?php echo $certifacate['nama_sertifikat']; ?></h4>
+                    </div>
+                    <div class="modal-body">
+                      <img src="images/published_certificate/<?php echo $certifacate['link_gambar']; ?>" class="img-thumbnail">
+                    </div>
+                    <div class="modal-footer">
+                      <a class="btn btn-success btn-sm pull-right" href="images/published_certificate/<?php echo $certifacate['link_gambar']; ?>" download>Download</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <?php endforeach ?>
             </tbody>
           </table>

@@ -19,8 +19,11 @@ if (isset($_GET['page'])) {
 } else if (isset($_GET['action'])) {
   $action = $_GET['action'];
 
-  if ($action == 'post_publish_certificate') { include "action/post_publish_certificate.php"; }
-  else if ($action == 'post_upload_certificate') { include "action/post_upload_certificate.php"; }
+  if ($action == 'post_publish_certificate')                     { include "action/post_publish_certificate.php"; }
+  else if ($action == 'post_upload_certificate')                 { include "action/post_upload_certificate.php"; }
+  else if ($action == 'get_verify_asli')                         { include "action/get_verify_asli.php"; }
+  else if ($action == 'get_verify_palsu')                        { include "action/get_verify_palsu.php"; }
+  else if ($action == 'get_delete_published_certificate')        { include "action/get_delete_published_certificate.php"; }
 
 } else {
   include "pages/dashboard.php";

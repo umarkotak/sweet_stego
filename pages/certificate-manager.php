@@ -27,7 +27,68 @@ $certificates = $sql->fetchAll();
         </div>
 
         <div class="box-body">
-          
+          <table id="data_table" class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Nama Pemilik</th>
+                <th>Sertifikat</th>
+                <th>Penerbit</th>
+                <th>Tanggal Terbit</th>
+                <th>Nomor Sertifikat</th>
+                <th>Informasi Tambahan</th>
+                <th>Gambar</th>
+                <th>Status</th>
+                <th width="5%">Aksi</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <?php $no = 1; ?>
+              <?php foreach ($certificates as $certifacate): ?>
+              <tr>
+                <td><?php echo $no; ?></td>
+                <td><?php echo $certifacate['nama_pemilik']; ?></td>
+                <td><?php echo $certifacate['nama_sertifikat']; ?></td>
+                <td><?php echo $certifacate['penerbit_sertifikat']; ?></td>
+                <td><?php echo $certifacate['tanggal_terbit']; ?></td>
+                <td><?php echo $certifacate['nomor_sertifikat']; ?></td>
+                <td><?php echo $certifacate['informasi_tambahan']; ?></td>
+                <td><a data-toggle="modal" data-target="#modal-primary-<?php echo $no; ?>"><img src="images/uploaded_certificate/<?php echo $certifacate['link_gambar']; ?>" class="img-thumbnail" style="width: 120px; height: 70px;"></a></td>
+                <td>
+                  <?php if ($certifacate['status'] == "unverified"): ?>
+                    <small class="label bg-yellow"><?php echo $certifacate['status']; ?></small>
+                  <?php elseif($certifacate['status'] == "verified"): ?>
+                    <small class="label bg-green"><?php echo $certifacate['status']; ?></small>
+                  <?php else: ?>
+                    <small class="label bg-red"><?php echo $certifacate['status']; ?></small>
+                  <?php endif ?>
+                <td>
+                  <a href="?action=get_verify_asli&id=<?php echo $certifacate['id']; ?>" class="btn btn-success btn-xs" onclick="return confirm('Apakah anda sudah mengecek kembali?')"><i class="glyphicon glyphicon-ok"></i>Asli</a>
+                  <a href="?action=get_verify_palsu&id=<?php echo $certifacate['id']; ?>" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda sudah mengecek kembali?')"><i class="glyphicon glyphicon-remove"></i>Palsu</a>
+                </td>
+              </tr>
+
+              <div class="modal modal-primary fade" id="modal-primary-<?php echo $no; ?>">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title">Sertifikat <?php echo $certifacate['nama_sertifikat']; ?></h4>
+                    </div>
+                    <div class="modal-body">
+                      <img src="images/uploaded_certificate/<?php echo $certifacate['link_gambar']; ?>" class="img-thumbnail">
+                    </div>
+                    <div class="modal-footer">
+                      <a class="btn btn-success btn-sm pull-right" href="images/uploaded_certificate/<?php echo $certifacate['link_gambar']; ?>" download>Download</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <?php endforeach ?>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
