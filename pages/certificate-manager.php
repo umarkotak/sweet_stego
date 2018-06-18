@@ -65,7 +65,8 @@ $certificates = $sql->fetchAll();
                   <?php endif ?>
                 <td>
                   <a href="?action=get_verify_asli&id=<?php echo $certifacate['id']; ?>" class="btn btn-success btn-xs" onclick="return confirm('Apakah anda sudah mengecek kembali?')"><i class="glyphicon glyphicon-ok"></i> Asli</a>
-                  <a href="?action=get_verify_palsu&id=<?php echo $certifacate['id']; ?>" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda sudah mengecek kembali?')"><i class="glyphicon glyphicon-remove"></i> Palsu</a>
+                  <a href="?action=get_verify_palsu&id=<?php echo $certifacate['id']; ?>" class="btn btn-warning btn-xs" onclick="return confirm('Apakah anda sudah mengecek kembali?')"><i class="glyphicon glyphicon-remove"></i> Palsu</a>
+                  <a href="?action=get_delete_uploaded_certificate&id=<?php echo $certifacate['id']; ?>" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapus sertifikat ini?')"><i class="glyphicon glyphicon-trash"></i> hapus</a>
                 </td>
               </tr>
 

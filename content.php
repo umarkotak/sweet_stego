@@ -24,6 +24,7 @@ if (isset($_GET['page'])) {
   else if ($action == 'get_verify_asli')                         { include "action/get_verify_asli.php"; }
   else if ($action == 'get_verify_palsu')                        { include "action/get_verify_palsu.php"; }
   else if ($action == 'get_delete_published_certificate')        { include "action/get_delete_published_certificate.php"; }
+  else if ($action == 'get_delete_uploaded_certificate')         { include "action/get_delete_uploaded_certificate.php"; }
 
 } else {
   include "pages/dashboard.php";
