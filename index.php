@@ -10,6 +10,11 @@ $sql->execute($data);
 $certificates = $sql->fetchAll();
 ?>
 
+<script src="lib/cleanstego.js"></script>
+<script src="lib/crypto/sha512v3.js"></script>
+<script src="lib/crypto/aes.js"></script>
+<script src="lib/crypto/aesctr.js"></script>
+
 <body class="hold-transition skin-blue layout-top-nav">
 <div class="wrapper">
 
@@ -140,21 +145,43 @@ $certificates = $sql->fetchAll();
           </div>
         </div>
 
+        <form method="post" action="action/post_upload_certificate_from_index.php">
         <div  class="row">
           <div class="col-sm-12">
             <div class="box box-primary">
               <div class="box-header with-border">
-                <h3 class="box-title">Check Keaslian Sertifikat</h3></small>
+                <h3 class="box-title">Upload Sertifikat</h3></small>
               </div>
 
               <div class="box-body">
-                <table>
-                  
-                </table>
+                <div class="row">
+                  <div class="col-sm-10">
+                    <div class="form-group">
+                      <input type="file" id="certificate_image" name="certificate_image" onchange="preview_image(event)" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="hidden" id="certificate_owner_name" name="certificate_owner_name" class="form-control" readonly>
+                    <input type="hidden" id="certificate_name" name="certificate_name" class="form-control" readonly>
+                    <input type="hidden" id="certificate_publisher" name="certificate_publisher" class="form-control" readonly>
+                    <input type="hidden" id="certificate_date_published" name="certificate_date_published" class="form-control" readonly>
+                    <input type="hidden" id="certificate_number" name="certificate_number" class="form-control" readonly>
+                    <input type="hidden" id="certificate_additional_information" name="certificate_additional_information" class="form-control" rows="4" readonly>
+                    <input type="hidden" id="result" name="result" class="form-control" rows="4" readonly>
+
+                    <button id="valid-button" class="btn btn-success btn-block btn-sm" style="display: none;">Upload Certificate</button>
+                    <button id="invalid-button" class="btn btn-danger btn-block btn-sm" style="display: none;" disabled>Invalid Certificate</button>
+                    <button id="processing-button" type="button" class="btn btn-default btn-block btn-sm" style="display: none;" disabled><i class="fa fa-spin fa-refresh"></i>&nbsp; Processing</button>
+                  </div>
+                  <div class="col-sm-12">
+                    <img id="preview_certificate_image" width="100%" class="img-thumbnail">
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        </form>
 
       </section>
     </div>
@@ -164,5 +191,64 @@ $certificates = $sql->fetchAll();
 
 </div>
 </body>
+
+<script type="text/javascript">
+
+  var preview_image = function(event) {
+    var preview_certificate_image = document.getElementById('preview_certificate_image');
+    preview_certificate_image.src = URL.createObjectURL(event.target.files[0]);
+
+    $("#valid-button").css({"display": "none"});
+    $("#invalid-button").css({"display": "none"});
+    $("#processing-button").css({"display": "block"});
+
+    check_certificate_validity();
+  };
+
+  function check_certificate_validity() {
+    function readfunc(){
+      var certificate_data = readMsgFromCanvas('canvas',"default");
+
+      if(certificate_data != null){
+          $("#result").val(certificate_data);
+          console.log(certificate_data)
+
+          if (certificate_data.includes("0|")) {
+            var output = certificate_data.split("0|");
+
+            try {
+              output = AesCtr.decrypt(output[0], output[1].split("").reverse().join(""),256);
+              var certificate = JSON.parse(output);
+
+              $("#certificate_name").val(certificate.certificate_name);
+              $("#certificate_publisher").val(certificate.certificate_publisher);
+              $("#certificate_date_published").val(certificate.certificate_date_published);
+              $("#certificate_number").val(certificate.certificate_number);
+              $("#certificate_additional_information").val(certificate.certificate_additional_information);
+              $("#certificate_owner_name").val(certificate.certificate_owner_name);
+              $("#after_check").show();
+            } catch(e) {
+              console.log("Fake, Wrong key");
+            }
+
+            $("#processing-button").css({"display": "none"});
+            $("#valid-button").css({"display": "block"});
+            $("#invalid-button").css({"display": "none"});
+            console.log(output);
+          } else {
+
+            $("#processing-button").css({"display": "none"});
+            $("#valid-button").css({"display": "none"});
+            $("#invalid-button").css({"display": "block"});
+            console.log("Fake");
+          }
+
+      } else $("#result").val('Data tidak ditemukan');
+
+    }
+    loadIMGtoCanvas('certificate_image','canvas',readfunc);
+  }
+
+</script>
 
 <?php include "script.php"; ?>
