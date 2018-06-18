@@ -145,42 +145,42 @@ $certificates = $sql->fetchAll();
           </div>
         </div>
 
-        <form method="post" action="action/post_upload_certificate_from_index.php">
-        <div  class="row">
-          <div class="col-sm-12">
-            <div class="box box-primary">
-              <div class="box-header with-border">
-                <h3 class="box-title">Upload Sertifikat</h3></small>
-              </div>
+        <form method="post" action="action/post_upload_certificate_from_index.php" enctype="multipart/form-data">
+          <div  class="row">
+            <div class="col-sm-12">
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Upload Sertifikat</h3></small>
+                </div>
 
-              <div class="box-body">
-                <div class="row">
-                  <div class="col-sm-10">
-                    <div class="form-group">
-                      <input type="file" id="certificate_image" name="certificate_image" onchange="preview_image(event)" class="form-control">
+                <div class="box-body">
+                  <div class="row">
+                    <div class="col-sm-10">
+                      <div class="form-group">
+                        <input type="file" id="certificate_image" name="certificate_image" onchange="preview_image(event)" class="form-control">
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-sm-2">
-                    <input type="hidden" id="certificate_owner_name" name="certificate_owner_name" class="form-control" readonly>
-                    <input type="hidden" id="certificate_name" name="certificate_name" class="form-control" readonly>
-                    <input type="hidden" id="certificate_publisher" name="certificate_publisher" class="form-control" readonly>
-                    <input type="hidden" id="certificate_date_published" name="certificate_date_published" class="form-control" readonly>
-                    <input type="hidden" id="certificate_number" name="certificate_number" class="form-control" readonly>
-                    <input type="hidden" id="certificate_additional_information" name="certificate_additional_information" class="form-control" rows="4" readonly>
-                    <input type="hidden" id="result" name="result" class="form-control" rows="4" readonly>
+                    <div class="col-sm-2">
+                      <input type="hidden" id="certificate_owner_name" name="certificate_owner_name" class="form-control" readonly>
+                      <input type="hidden" id="certificate_name" name="certificate_name" class="form-control" readonly>
+                      <input type="hidden" id="certificate_publisher" name="certificate_publisher" class="form-control" readonly>
+                      <input type="hidden" id="certificate_date_published" name="certificate_date_published" class="form-control" readonly>
+                      <input type="hidden" id="certificate_number" name="certificate_number" class="form-control" readonly>
+                      <input type="hidden" id="certificate_additional_information" name="certificate_additional_information" class="form-control" rows="4" readonly>
+                      <input type="hidden" id="result" name="result" class="form-control" rows="4" readonly>
 
-                    <button id="valid-button" class="btn btn-success btn-block btn-sm" style="display: none;">Upload Certificate</button>
-                    <button id="invalid-button" class="btn btn-danger btn-block btn-sm" style="display: none;" disabled>Invalid Certificate</button>
-                    <button id="processing-button" type="button" class="btn btn-default btn-block btn-sm" style="display: none;" disabled><i class="fa fa-spin fa-refresh"></i>&nbsp; Processing</button>
-                  </div>
-                  <div class="col-sm-12">
-                    <img id="preview_certificate_image" width="100%" class="img-thumbnail">
+                      <button id="valid-button" name="btn_upload_certificate" type="submit" class="btn btn-success btn-block btn-sm" style="display: none;">Upload Certificate</button>
+                      <button id="invalid-button" class="btn btn-danger btn-block btn-sm" style="display: none;" disabled>Invalid Certificate</button>
+                      <button id="processing-button" type="button" class="btn btn-default btn-block btn-sm" style="display: none;" disabled><i class="fa fa-spin fa-refresh"></i>&nbsp; Processing</button>
+                    </div>
+                    <div class="col-sm-12">
+                      <img id="preview_certificate_image" width="100%" class="img-thumbnail">
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
         </form>
 
       </section>
