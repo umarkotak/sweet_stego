@@ -133,6 +133,8 @@ $certificates = $sql->fetchAll();
                         </div>
                       </div>
                     </div>
+
+                    <?php $no += 1; ?>
                     <?php endforeach ?>
                   </tbody>
                 </table>
