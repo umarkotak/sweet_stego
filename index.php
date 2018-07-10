@@ -28,7 +28,7 @@ $certificates = $sql->fetchAll();
         <div class="collapse navbar-collapse pull-right" id="navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="dashboard.php">Dashboard</a></li>
-            <li><a href="#">Check Certificate</a></li>
+            <li><a href="#check-certificate">Check Certificate</a></li>
             <li><a href="page_login.php">Login</a></li>
           </ul>
         </div>
@@ -148,7 +148,7 @@ $certificates = $sql->fetchAll();
         </div>
 
         <form method="post" action="action/post_upload_certificate_from_index.php" enctype="multipart/form-data">
-          <div  class="row">
+          <div  class="row" id="check-certificate">
             <div class="col-sm-12">
               <div class="box box-primary">
                 <div class="box-header with-border">
