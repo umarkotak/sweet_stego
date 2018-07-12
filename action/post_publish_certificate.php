@@ -31,8 +31,8 @@ $filepath = "images/published_certificate/$name_image";
 file_put_contents($filepath,$data);
 
 try {
-  $sql = $conn->prepare('INSERT INTO published_certificates (nama_pemilik, nama_sertifikat,penerbit_sertifikat,tanggal_terbit, nomor_sertifikat, informasi_tambahan, link_gambar, status)
-         values (:nama_pemilik, :nama_sertifikat,:penerbit_sertifikat,:tanggal_terbit, :nomor_sertifikat, :informasi_tambahan, :link_gambar, :status)');
+  $sql = $conn->prepare('INSERT INTO published_certificates (nama_pemilik, nama_sertifikat, penerbit_sertifikat, tanggal_terbit, nomor_sertifikat, informasi_tambahan, link_gambar, status)
+         values (:nama_pemilik, :nama_sertifikat, :penerbit_sertifikat, :tanggal_terbit, :nomor_sertifikat, :informasi_tambahan, :link_gambar, :status)');
 
   $data = array(':nama_pemilik' => $nama_pemilik,
                 ':nama_sertifikat' => $nama_sertifikat,

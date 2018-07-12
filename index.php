@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <?php include "config.php" ?>
 <?php include "head.php"; ?>
 <?php include "notice.php" ?>

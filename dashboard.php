@@ -1,5 +1,3 @@
-<?php session_start(); ?>
-
 <?php include "config.php" ?>
 
 <!DOCTYPE html>
@@ -14,7 +12,7 @@
   <?php include "sidebar.php"; ?>
 
   <div class="content-wrapper">
-  <?php include "content.php"; ?>
+  <?php include "routes.php"; ?>
   </div>
 
   <?php include "footer.php"; ?>
