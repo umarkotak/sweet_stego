@@ -17,9 +17,9 @@ if (isset($_POST['submit'])) {
       ':password' => $password,
       ':role' => $role
     );
-    // $sql->execute($data);
+    $sql->execute($data);
     $_SESSION['green-notice'] = "Pendaftaran berhasil";
-    header("location: $HOST_NAME/index.php");
+    header("location: $HOST_NAME/page_login.php");
   } catch (Exception $e) {
 
     $_SESSION['red-notice'] = "Terjadi kesalahan " . $e->getMessage();

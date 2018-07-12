@@ -14,3 +14,7 @@ try {
   die();
 }
 ?>
+
+<?php
+  $HOST_NAME = "/aplikasi_skripsi";
+?>
