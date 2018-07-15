@@ -35,7 +35,7 @@ try {
               );
   $sql->execute($data);
 
-  $_SESSION['green-notice'] = "Sertifikat anda berhasil di publish";
+  $_SESSION['green-notice'] = "Sertifikat anda berhasil dikirim";
   header("location: /aplikasi_skripsi/index.php");
 } catch (Exception $e) {
 

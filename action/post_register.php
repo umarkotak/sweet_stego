@@ -3,6 +3,7 @@ POST Register
 <?php include "config.php" ?>
 <?php
 if (isset($_POST['submit'])) {
+  $username = $_POST['username'];
   $full_name = $_POST['full_name'];
   $email = $_POST['email'];
   $password = $_POST['password'];
@@ -10,8 +11,9 @@ if (isset($_POST['submit'])) {
   $role = 'user';
 
   try {
-    $sql = $conn->prepare('INSERT INTO users (full_name, email, password, role) values (:full_name, :email, :password, :role)');
+    $sql = $conn->prepare('INSERT INTO users (username, full_name, email, password, role) values (:username, :full_name, :email, :password, :role)');
     $data = Array(
+      ':username' => $username,
       ':full_name' => $full_name,
       ':email' => $email,
       ':password' => $password,

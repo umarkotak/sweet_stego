@@ -39,7 +39,7 @@ $certificates = $sql->fetchAll();
                 <th>Informasi Tambahan</th>
                 <th>Gambar</th>
                 <th>Status</th>
-                <th width="5%">Aksi</th>
+                <th width="140">Aksi</th>
               </tr>
             </thead>
 
@@ -57,11 +57,11 @@ $certificates = $sql->fetchAll();
                 <td><a data-toggle="modal" data-target="#modal-primary-<?php echo $no; ?>"><img src="images/uploaded_certificate/<?php echo $certifacate['link_gambar']; ?>" class="img-thumbnail" style="width: 120px; height: 70px;"></a></td>
                 <td>
                   <?php if ($certifacate['status'] == "unverified"): ?>
-                    <small class="label bg-yellow"><?php echo $certifacate['status']; ?></small>
+                    <small class="label bg-yellow"><i class="glyphicon glyphicon-question-sign"></i> <?php echo $certifacate['status']; ?></small>
                   <?php elseif($certifacate['status'] == "verified"): ?>
-                    <small class="label bg-green"><?php echo $certifacate['status']; ?></small>
+                    <small class="label bg-green"><i class="glyphicon glyphicon-ok-sign"></i> <?php echo $certifacate['status']; ?></small>
                   <?php else: ?>
-                    <small class="label bg-red"><?php echo $certifacate['status']; ?></small>
+                    <small class="label bg-red"><i class="glyphicon glyphicon-remove-sign"></i> <?php echo $certifacate['status']; ?></small>
                   <?php endif ?>
                 <td>
                   <a href="?action=get_verify_asli&id=<?php echo $certifacate['id']; ?>" class="btn btn-success btn-xs" onclick="return confirm('Apakah anda sudah mengecek kembali?')"><i class="glyphicon glyphicon-ok"></i> Asli</a>
@@ -82,7 +82,23 @@ $certificates = $sql->fetchAll();
                       <img src="images/uploaded_certificate/<?php echo $certifacate['link_gambar']; ?>" class="img-thumbnail">
                     </div>
                     <div class="modal-footer">
-                      <a class="btn btn-success btn-sm pull-right" href="images/uploaded_certificate/<?php echo $certifacate['link_gambar']; ?>" download>Download</a>
+                      <div class="form-group">
+                        <?php if ($certifacate['status'] == "unverified"): ?>
+                          <span class="btn btn-warning btn-sm"><?php echo $certifacate['status']; ?></span>
+                        <?php elseif($certifacate['status'] == "verified"): ?>
+                          <span class="btn btn-success btn-sm"><?php echo $certifacate['status']; ?></span>
+                        <?php else: ?>
+                          <span class="btn btn-danger btn-sm"><?php echo $certifacate['status']; ?></span>
+                        <?php endif ?>
+
+                        <span class="btn btn-success btn-sm pull-left">Pemilik : <?php echo $certifacate['nama_pemilik']; ?></span>
+                        <span class="btn btn-success btn-sm pull-left">Penerbit : <?php echo $certifacate['penerbit_sertifikat']; ?></span>
+                        <span class="btn btn-success btn-sm pull-left">Nomor : <?php echo $certifacate['nomor_sertifikat']; ?></span>
+                      </div>
+
+                      <div class="form-group">
+                        <a class="btn btn-success btn-sm" href="images/uploaded_certificate/<?php echo $certifacate['link_gambar']; ?>" download>Download</a>
+                      </div>
                     </div>
                   </div>
                 </div>

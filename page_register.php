@@ -13,6 +13,11 @@
 
     <form action="action/post_register.php" method="post">
       <div class="form-group has-feedback">
+        <input name="username" type="text" class="form-control" placeholder="User name" required>
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+
+      <div class="form-group has-feedback">
         <input name="full_name" type="text" class="form-control" placeholder="Full name" required>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
