@@ -33,6 +33,7 @@ $certificates = $sql->fetchAll();
                 <li><a href="dashboard.php">Dashboard</a></li>
                 <li><a href="#check-certificate">Check Certificate</a></li>
               <?php else: ?>
+                <li><a href="dashboard.php">Dashboard</a></li>
                 <li><a href="#check-certificate">Check Certificate</a></li>
               <?php endif ?>
 
@@ -40,6 +41,7 @@ $certificates = $sql->fetchAll();
               <li><a href="action/post_logout.php">Logout</a></li>
             <?php else: ?>
 
+                <li><a href="dashboard.php">Dashboard</a></li>
               <li><a href="#check-certificate">Check Certificate</a></li>
               <li><a href="page_login.php">Login</a></li>
             <?php endif ?>
