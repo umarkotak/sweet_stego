@@ -15,7 +15,7 @@
 <form>
   <section class="content">
     <div class="row">
-      <div class="col-sm-12">
+      <div class="col-sm-4">
         <div class="box box-primary">
           <div class="box-header">
             <h3 class="box-title">SHA-512 Calculation step by step</h3>
@@ -23,7 +23,7 @@
 
           <div class="box-body">
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label>Input Raw Text :</label>
                   <input type="text" name="raw_text" id="raw_text" class="form-control" value="SERTIFIKAT">
