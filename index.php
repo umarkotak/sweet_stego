@@ -65,31 +65,28 @@ $certificates = $sql->fetchAll();
       <section class="content">
 
         <div class="row">
-          <div class="col-sm-4">
-            <div class="box box-primary">
-              <div class="box-header with-border">
-                <h3 class="box-title">Welcome</h3>
-              </div>
-              <div class="box-body">
-                <p style="text-align: justify;">
-                  Certi protect, merupakan aplikasi online untuk pengamanan sertifikat anda. Menggunakan teknologi steganografi untuk melindungi sertifikat digital anda.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-8">
+          <div class="col-sm-12">
             <div class="box box-primary">
               <div class="box-header with-border">
                 <h3 class="box-title">Features</h3>
               </div>
               <div class="box-body">
                 <p style="text-align: justify;">
-                  <ol>
-                    <li>Menjaga sertifikat anda dengan steganografi yang dikombinakasikan dengan kriptografi SHA</li>
-                    <li>Mapping informasi secara acak pada gambar, akan sulit untuk dipalsukan</li>
+                  langkah penggunaan aplikasi
+                  </p><ol>
+                    <li>Untuk mencoba aplikasi anda dapat ke halaman dashboard</li>
+                    <li>Menu protect sertifikat digunakan untuk melindungi sertifikat digital anda.</li>
+                    <li>Pada menu ini silahkan masukkan informasi mengenai sertifikat anda dengan benar, kemudian pilih gambar sertifikat yang sesuai</li>
+                    <li>Klik tombol lindungi sertifikat dan tunggu proses selesai</li>
+                    <li>Klik publish untuk mempublikasikan sertifikat anda.</li>
+                    <li>Untuk melakukan pengecekkan apakah gambar telah dilindungi, anda dapat mendownload sertifikat yang telah dipublish pada halaman awal ataupun pada menu published certificate</li>
+                    <li>Download sertifikat digital yang telah anda beri pengamanan</li>
+                    <li>Silahkan menuju halaman check sertifikat untuk memverifikasi keaslian dari sertifikat yang telah anda download</li>
+                    <li>Masukkan gambar kemudian klik tombol check certificate</li>
+                    <li>Perhatikan disisi kanan aplikasi, apakah data yang sebelumnya muncul secara otomatis atau tidak</li>
+                    <li>Bila data muncul dan nilainya sama seperti yang ditampilkan pada citra sertifikat, maka sertifikat tersebut adalah asli</li>
                   </ol>
-                </p>
+                <p></p>
               </div>
             </div>
           </div>
@@ -168,6 +165,7 @@ $certificates = $sql->fetchAll();
               <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Upload Sertifikat</h3></small>
+                  <small class="pull-right">Silahkan upload sertifikat yang akan diverifikasi disini, silahkan pilih file sertifikat anda</small>
                 </div>
 
                 <div class="box-body">
@@ -190,8 +188,36 @@ $certificates = $sql->fetchAll();
                       <button id="invalid-button" class="btn btn-danger btn-block btn-sm" style="display: none;" disabled>Invalid Certificate</button>
                       <button id="processing-button" type="button" class="btn btn-default btn-block btn-sm" style="display: none;" disabled><i class="fa fa-spin fa-refresh"></i>&nbsp; Processing</button>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-8">
                       <img id="preview_certificate_image" width="100%" class="img-thumbnail">
+                    </div>
+                    <div class="col-sm-4">
+                      <table class="table table-bordered table-hover">
+                        <tr>
+                          <td style="width: 35%">Nama</td>
+                          <td><p id="text_certificate_owner_name" name="certificate_owner_name" readonly></p></td>
+                        </tr>
+                        <tr>
+                          <td >Kegiatan</td>
+                          <td><p id="text_certificate_name" name="certificate_owner_name" readonly></p></td>
+                        </tr>
+                        <tr>
+                          <td >Penerbit</td>
+                          <td><p id="text_certificate_publisher" name="certificate_owner_name" readonly></p></td>
+                        </tr>
+                        <tr>
+                          <td >Tanggal Terbit</td>
+                          <td><p id="text_certificate_date_published" name="certificate_owner_name" readonly></p></td>
+                        </tr>
+                        <tr>
+                          <td >Nomor</td>
+                          <td><p id="text_certificate_number" name="certificate_owner_name" readonly></p></td>
+                        </tr>
+                        <tr>
+                          <td >Informasi Lain</td>
+                          <td><p id="text_certificate_additional_information" name="certificate_owner_name" readonly></p></td>
+                        </tr>
+                      </table>
                     </div>
                   </div>
                 </div>
@@ -243,6 +269,13 @@ $certificates = $sql->fetchAll();
               $("#certificate_number").val(certificate.certificate_number);
               $("#certificate_additional_information").val(certificate.certificate_additional_information);
               $("#certificate_owner_name").val(certificate.certificate_owner_name);
+
+              $("#text_certificate_owner_name").text(certificate.certificate_owner_name);
+              $("#text_certificate_name").text(certificate.certificate_name);
+              $("#text_certificate_publisher").text(certificate.certificate_publisher);
+              $("#text_certificate_date_published").text(certificate.certificate_date_published);
+              $("#text_certificate_number").text(certificate.certificate_number);
+              $("#text_certificate_additional_information").text(certificate.certificate_additional_information);
               $("#after_check").show();
             } catch(e) {
               console.log("Fake, Wrong key");
