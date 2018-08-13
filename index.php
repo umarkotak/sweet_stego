@@ -106,6 +106,7 @@ $certificates = $sql->fetchAll();
                       <th>No.</th>
                       <th>Nama Pemilik</th>
                       <th>Sertifikat</th>
+                      <th>Klasifikasi</th>
                       <th>Penerbit</th>
                       <th>Tanggal Terbit</th>
                       <th>Nomor Sertifikat</th>
@@ -121,6 +122,7 @@ $certificates = $sql->fetchAll();
                       <td><?php echo $no; ?></td>
                       <td><?php echo $certifacate['nama_pemilik']; ?></td>
                       <td><?php echo $certifacate['nama_sertifikat']; ?></td>
+                      <td><?php echo $certifacate['classification']; ?></td>
                       <td><?php echo $certifacate['penerbit_sertifikat']; ?></td>
                       <td><?php echo $certifacate['tanggal_terbit']; ?></td>
                       <td><?php echo $certifacate['nomor_sertifikat']; ?></td>
