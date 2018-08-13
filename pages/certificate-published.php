@@ -33,6 +33,7 @@ $certificates = $sql->fetchAll();
                 <th>No.</th>
                 <th>Nama Pemilik</th>
                 <th>Sertifikat</th>
+                <th>Klasifikasi</th>
                 <th>Penerbit</th>
                 <th>Tanggal Terbit</th>
                 <th>Nomor Sertifikat</th>
@@ -45,20 +46,21 @@ $certificates = $sql->fetchAll();
 
             <tbody>
               <?php $no = 1; ?>
-              <?php foreach ($certificates as $certifacate): ?>
+              <?php foreach ($certificates as $certificate): ?>
               <tr>
                 <td><?php echo $no; ?></td>
-                <td><?php echo $certifacate['nama_pemilik']; ?></td>
-                <td><?php echo $certifacate['nama_sertifikat']; ?></td>
-                <td><?php echo $certifacate['penerbit_sertifikat']; ?></td>
-                <td><?php echo $certifacate['tanggal_terbit']; ?></td>
-                <td><?php echo $certifacate['nomor_sertifikat']; ?></td>
-                <td><?php echo $certifacate['informasi_tambahan']; ?></td>
-                <td><a data-toggle="modal" data-target="#modal-primary-<?php echo $no; ?>"><img src="images/published_certificate/<?php echo $certifacate['link_gambar']; ?>" class="img-thumbnail" style="width: 120px; height: 70px;"></a></td>
-                <td><?php echo $certifacate['status']; ?></td>
+                <td><?php echo $certificate['nama_pemilik']; ?></td>
+                <td><?php echo $certificate['nama_sertifikat']; ?></td>
+                <td><?php echo $certificate['classification']; ?></td>
+                <td><?php echo $certificate['penerbit_sertifikat']; ?></td>
+                <td><?php echo $certificate['tanggal_terbit']; ?></td>
+                <td><?php echo $certificate['nomor_sertifikat']; ?></td>
+                <td><?php echo $certificate['informasi_tambahan']; ?></td>
+                <td><a data-toggle="modal" data-target="#modal-primary-<?php echo $no; ?>"><img src="images/published_certificate/<?php echo $certificate['link_gambar']; ?>" class="img-thumbnail" style="width: 120px; height: 70px;"></a></td>
+                <td><?php echo $certificate['status']; ?></td>
                 <td>
                   <a data-toggle="modal" data-target="#modal-primary-<?php echo $no; ?>" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-eye-open"></i> lihat</a>
-                  <a href="?action=get_delete_published_certificate&id=<?php echo $certifacate['id']; ?>" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapus sertifikat ini?')"><i class="glyphicon glyphicon-trash"></i> hapus</a>
+                  <a href="?action=get_delete_published_certificate&id=<?php echo $certificate['id']; ?>" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapus sertifikat ini?')"><i class="glyphicon glyphicon-trash"></i> hapus</a>
                 </td>
               </tr>
 

@@ -9,6 +9,7 @@ $penerbit_sertifikat = $_POST['certificate_publisher'];
 $tanggal_terbit = $_POST['certificate_date_published'];
 $nomor_sertifikat = $_POST['certificate_number'];
 $informasi_tambahan = $_POST['certificate_additional_information'];
+$classification = $_POST['certificate_classification'];
 $raw_data = $_POST['result'];
 $link_gambar = $nama_pemilik . "-" . $tanggal_terbit . "-" . $nama_sertifikat . ".png";
 $link_gambar = str_replace(" ","_",$link_gambar);
@@ -20,8 +21,8 @@ $loc_image   = $_FILES['certificate_image']['tmp_name'];
 move_uploaded_file($loc_image,"../images/uploaded_certificate/$name_image");
 
 try {
-  $sql = $conn->prepare('INSERT INTO certificates (nama_pemilik, nama_sertifikat,penerbit_sertifikat,tanggal_terbit, nomor_sertifikat, informasi_tambahan, link_gambar, status, raw_data)
-         values (:nama_pemilik, :nama_sertifikat,:penerbit_sertifikat,:tanggal_terbit, :nomor_sertifikat, :informasi_tambahan, :link_gambar, :status, :raw_data)');
+  $sql = $conn->prepare('INSERT INTO certificates (nama_pemilik, nama_sertifikat,penerbit_sertifikat,tanggal_terbit, nomor_sertifikat, informasi_tambahan, link_gambar, status, raw_data, classification)
+         values (:nama_pemilik, :nama_sertifikat,:penerbit_sertifikat,:tanggal_terbit, :nomor_sertifikat, :informasi_tambahan, :link_gambar, :status, :raw_data, :classification)');
 
   $data = array(':nama_pemilik' => $nama_pemilik,
                 ':nama_sertifikat' => $nama_sertifikat,
@@ -31,7 +32,8 @@ try {
                 ':informasi_tambahan' => $informasi_tambahan,
                 ':link_gambar' => $link_gambar,
                 ':status' => $status,
-                ':raw_data' => $raw_data
+                ':raw_data' => $raw_data,
+                ':classification' => $classification
               );
   $sql->execute($data);
 

@@ -16,6 +16,7 @@ $informasi_tambahan = $_POST['certificate_additional_information'];
 $link_gambar = $nama_pemilik . "-" . $tanggal_terbit . "-" . $nama_sertifikat . ".png";
 $link_gambar = str_replace(" ","_",$link_gambar);
 $base64_certificate = $_POST['base64_certificate'];
+$classification = $_POST['certificate_classification'];
 $status = 'published';
 
 $name_image  = $link_gambar;
@@ -31,8 +32,8 @@ $filepath = "images/published_certificate/$name_image";
 file_put_contents($filepath,$data);
 
 try {
-  $sql = $conn->prepare('INSERT INTO published_certificates (nama_pemilik, nama_sertifikat, penerbit_sertifikat, tanggal_terbit, nomor_sertifikat, informasi_tambahan, link_gambar, status)
-         values (:nama_pemilik, :nama_sertifikat, :penerbit_sertifikat, :tanggal_terbit, :nomor_sertifikat, :informasi_tambahan, :link_gambar, :status)');
+  $sql = $conn->prepare('INSERT INTO published_certificates (nama_pemilik, nama_sertifikat, penerbit_sertifikat, tanggal_terbit, nomor_sertifikat, informasi_tambahan, link_gambar, status, classification)
+         values (:nama_pemilik, :nama_sertifikat, :penerbit_sertifikat, :tanggal_terbit, :nomor_sertifikat, :informasi_tambahan, :link_gambar, :status, :classification)');
 
   $data = array(':nama_pemilik' => $nama_pemilik,
                 ':nama_sertifikat' => $nama_sertifikat,
@@ -41,7 +42,8 @@ try {
                 ':nomor_sertifikat' => $nomor_sertifikat,
                 ':informasi_tambahan' => $informasi_tambahan,
                 ':link_gambar' => $link_gambar,
-                ':status' => $status
+                ':status' => $status,
+                ':classification' => $classification
               );
   $sql->execute($data);
 

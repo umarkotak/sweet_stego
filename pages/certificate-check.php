@@ -58,6 +58,11 @@
           </div>
 
           <div class="form-group">
+            <label>Klasifikasi Sertifikat</label>
+            <input type="text" id="certificate_classification" name="certificate_classification" class="form-control" readonly>
+          </div>
+
+          <div class="form-group">
             <label>Penerbit Sertifikat</label>
             <input type="text" id="certificate_publisher" name="certificate_publisher" class="form-control" readonly>
           </div>
@@ -126,6 +131,7 @@
               $("#certificate_number").val(certificate.certificate_number);
               $("#certificate_additional_information").val(certificate.certificate_additional_information);
               $("#certificate_owner_name").val(certificate.certificate_owner_name);
+              $("#certificate_classification").val(certificate.certificate_classification);
               $("#after_check").show();
             } catch(e) {
               console.log("Fake, Wrong key");

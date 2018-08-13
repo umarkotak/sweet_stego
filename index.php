@@ -43,7 +43,7 @@ $certificates = $sql->fetchAll();
 
                 <li><a href="dashboard.php">Dashboard</a></li>
               <li><a href="#check-certificate">Check Certificate</a></li>
-              <li><a href="page_login.php">Login</a></li>
+              <!-- <li><a href="page_login.php">Login</a></li> -->
             <?php endif ?>
           </ul>
         </div>
@@ -182,6 +182,7 @@ $certificates = $sql->fetchAll();
                       <input type="hidden" id="certificate_date_published" name="certificate_date_published" class="form-control" readonly>
                       <input type="hidden" id="certificate_number" name="certificate_number" class="form-control" readonly>
                       <input type="hidden" id="certificate_additional_information" name="certificate_additional_information" class="form-control" rows="4" readonly>
+                      <input type="hidden" id="certificate_classification" name="certificate_classification" class="form-control" rows="4" readonly>
                       <input type="hidden" id="result" name="result" class="form-control" rows="4" readonly>
 
                       <button id="valid-button" name="btn_upload_certificate" type="submit" class="btn btn-success btn-block btn-sm" style="display: none;">Upload Certificate</button>
@@ -195,27 +196,31 @@ $certificates = $sql->fetchAll();
                       <table class="table table-bordered table-hover">
                         <tr>
                           <td style="width: 35%">Nama</td>
-                          <td><p id="text_certificate_owner_name" name="certificate_owner_name" readonly></p></td>
+                          <td><p id="text_certificate_owner_name" readonly></p></td>
                         </tr>
                         <tr>
                           <td >Kegiatan</td>
-                          <td><p id="text_certificate_name" name="certificate_owner_name" readonly></p></td>
+                          <td><p id="text_certificate_name" readonly></p></td>
+                        </tr>
+                        <tr>
+                          <td >Klasifikasi</td>
+                          <td><p id="text_certificate_classification" readonly></p></td>
                         </tr>
                         <tr>
                           <td >Penerbit</td>
-                          <td><p id="text_certificate_publisher" name="certificate_owner_name" readonly></p></td>
+                          <td><p id="text_certificate_publisher" readonly></p></td>
                         </tr>
                         <tr>
                           <td >Tanggal Terbit</td>
-                          <td><p id="text_certificate_date_published" name="certificate_owner_name" readonly></p></td>
+                          <td><p id="text_certificate_date_published" readonly></p></td>
                         </tr>
                         <tr>
                           <td >Nomor</td>
-                          <td><p id="text_certificate_number" name="certificate_owner_name" readonly></p></td>
+                          <td><p id="text_certificate_number" readonly></p></td>
                         </tr>
                         <tr>
                           <td >Informasi Lain</td>
-                          <td><p id="text_certificate_additional_information" name="certificate_owner_name" readonly></p></td>
+                          <td><p id="text_certificate_additional_information" readonly></p></td>
                         </tr>
                       </table>
                     </div>
@@ -269,6 +274,7 @@ $certificates = $sql->fetchAll();
               $("#certificate_number").val(certificate.certificate_number);
               $("#certificate_additional_information").val(certificate.certificate_additional_information);
               $("#certificate_owner_name").val(certificate.certificate_owner_name);
+              $("#certificate_classification").val(certificate.certificate_classification);
 
               $("#text_certificate_owner_name").text(certificate.certificate_owner_name);
               $("#text_certificate_name").text(certificate.certificate_name);
@@ -276,6 +282,7 @@ $certificates = $sql->fetchAll();
               $("#text_certificate_date_published").text(certificate.certificate_date_published);
               $("#text_certificate_number").text(certificate.certificate_number);
               $("#text_certificate_additional_information").text(certificate.certificate_additional_information);
+              $("#text_certificate_classification").text(certificate.certificate_classification);
               $("#after_check").show();
             } catch(e) {
               console.log("Fake, Wrong key");

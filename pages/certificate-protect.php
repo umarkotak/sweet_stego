@@ -39,6 +39,17 @@
           </div>
 
           <div class="form-group">
+            <label>Klasifikasi Sertifikat</label>
+            <select id="certificate_classification" name="certificate_classification" class="form-control">
+              <option value="soft_skill">Soft Skill</option>
+              <option value="hard_skill">Hard Skill</option>
+              <option value="seminar_nasional">Seminar Nasional</option>
+              <option value="kopasus">Kopasus</option>
+              <option value="lainnya">Lainnya</option>
+            </select>
+          </div>
+
+          <div class="form-group">
             <label>Penerbit Sertifikat</label>
             <input type="text" id="certificate_publisher" name="certificate_publisher" class="form-control" placeholder="lab dasar stt pln">
           </div>
@@ -141,7 +152,7 @@
               <textarea id="log_before_message_encrypted_by_sha512" class="form-control" rows="4" readonly></textarea>
               <hr>
 
-              <label>Hasil Enkripsi AES dengan Kunci sha512</label>
+              <label>Hasil Enkripsi dengan Kunci sha512</label>
               <textarea id="log_before_message_encrypted_by_aes" class="form-control" rows="4" readonly></textarea>
               <hr>
 
@@ -250,6 +261,7 @@
     certificate_data["certificate_number"] = $("#certificate_number").val();
     certificate_data["certificate_additional_information"] = $("#certificate_additional_information").val();
     certificate_data["certificate_owner_name"] = $("#certificate_owner_name").val();
+    certificate_data["certificate_classification"] = $("#certificate_classification").val();
     return certificate_data;
   }
 
