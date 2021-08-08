@@ -100,52 +100,52 @@
 <script type="text/javascript">
 
   var preview_image = function(event) {
-    var preview_certificate_image = document.getElementById('preview_certificate_image');
-    preview_certificate_image.src = URL.createObjectURL(event.target.files[0]);
-    $("#process_certificate_section").show();
-  };
+    var preview_certificate_image = document.getElementById('preview_certificate_image')
+    preview_certificate_image.src = URL.createObjectURL(event.target.files[0])
+    $("#process_certificate_section").show()
+  }
 
   function check_certificate() {
-    read_data_from_image();
+    read_data_from_image()
   }
 
   function read_data_from_image(){
-    $("#result").html('Processing...');
+    $("#result").html('Processing...')
     function readfunc(){
-      var certificate_data = readMsgFromCanvas('canvas',"default");
+      var certificate_data = readMsgFromCanvas('canvas',"default")
 
       if(certificate_data != null){
-          $("#result").val(certificate_data);
+          $("#result").val(certificate_data)
           console.log(certificate_data)
 
           if (certificate_data.includes("0|")) {
-            var output = certificate_data.split("0|");
+            var output = certificate_data.split("0|")
 
             try {
-              output = AesCtr.decrypt(output[0], output[1].split("").reverse().join(""),256);
-              var certificate = JSON.parse(output);
+              output = AesCtr.decrypt(output[0], output[1].split("").reverse().join(""),256)
+              var certificate = JSON.parse(output)
 
-              $("#certificate_name").val(certificate.certificate_name);
-              $("#certificate_publisher").val(certificate.certificate_publisher);
-              $("#certificate_date_published").val(certificate.certificate_date_published);
-              $("#certificate_number").val(certificate.certificate_number);
-              $("#certificate_additional_information").val(certificate.certificate_additional_information);
-              $("#certificate_owner_name").val(certificate.certificate_owner_name);
-              $("#certificate_classification").val(certificate.certificate_classification);
-              $("#after_check").show();
+              $("#certificate_name").val(certificate.certificate_name)
+              $("#certificate_publisher").val(certificate.certificate_publisher)
+              $("#certificate_date_published").val(certificate.certificate_date_published)
+              $("#certificate_number").val(certificate.certificate_number)
+              $("#certificate_additional_information").val(certificate.certificate_additional_information)
+              $("#certificate_owner_name").val(certificate.certificate_owner_name)
+              $("#certificate_classification").val(certificate.certificate_classification)
+              $("#after_check").show()
             } catch(e) {
-              console.log("Fake, Wrong key");
+              console.log("Fake, Wrong key")
             }
 
-            console.log(output);
+            console.log(output)
           } else {
-            console.log("Fake");
+            console.log("Fake")
           }
 
-      }else $("#result").val('Data tidak ditemukan');
+      }else $("#result").val('Data tidak ditemukan')
 
     }
-    loadIMGtoCanvas('certificate_image','canvas',readfunc);
+    loadIMGtoCanvas('certificate_image','canvas',readfunc)
   }
 
 </script>
