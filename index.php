@@ -58,7 +58,7 @@ $certificates = $sql->fetchAll();
       <section class="content-header">
         <h1>
           Certi Protect
-          <small>Version 1</small>
+          <small>Version 2</small>
         </h1>
       </section>
 

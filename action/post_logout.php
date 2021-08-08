@@ -1,5 +1,6 @@
 POST Logout
 
+<?php ob_start(); ?>
 <?php include "config.php" ?>
 <?php
 try {
@@ -8,12 +9,10 @@ try {
   unset($_SESSION['userdata']);
 
   $_SESSION['green-notice'] = "Logout berhasil";
-  header("location: /index.php");
-  // header("location: $HOST_NAME/index.php");
+  header("location: $HOST_NAME/index.php", true, 301);
 } catch (Exception $e) {
 
   $_SESSION['red-notice'] = "Terjadi kesalahan " . $e->getMessage();
-  header("location: /index.php");
-  // header("location: $HOST_NAME/index.php");
+  header("location: $HOST_NAME/index.php", true, 301);
 }
 ?>
