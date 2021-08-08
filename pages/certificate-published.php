@@ -70,13 +70,13 @@ $certificates = $sql->fetchAll();
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title">Sertifikat <?php echo $certifacate['nama_sertifikat']; ?></h4>
+                      <h4 class="modal-title">Sertifikat <?php echo $certificate['nama_sertifikat']; ?></h4>
                     </div>
                     <div class="modal-body">
-                      <img src="images/published_certificate/<?php echo $certifacate['link_gambar']; ?>" class="img-thumbnail">
+                      <img src="images/published_certificate/<?php echo $certificate['link_gambar']; ?>" class="img-thumbnail">
                     </div>
                     <div class="modal-footer">
-                      <a class="btn btn-success btn-sm pull-right" href="images/published_certificate/<?php echo $certifacate['link_gambar']; ?>" download>Download</a>
+                      <a class="btn btn-success btn-sm pull-right" href="images/published_certificate/<?php echo $certificate['link_gambar']; ?>" download>Download</a>
                     </div>
                   </div>
                 </div>

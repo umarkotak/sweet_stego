@@ -14,6 +14,18 @@
         <li>
           <a href="?page=setting"><i class="fa fa-gears"></i></a>
         </li>
+        <li>
+          <?php if (isset($_SESSION['role'])): ?>
+            <a href="">Hello, <?php echo $_SESSION['username']; ?></a>
+          <?php endif ?>
+        </li>
+        <li>
+          <?php if (isset($_SESSION['role'])): ?>
+            <a href="action/post_logout.php"><i class="fa fa-sign-out"></i> Logout</a>
+          <?php else: ?>
+            <li><a href="page_login.php">Login</a></li>
+          <?php endif ?>
+        </li>
       </ul>
     </div>
   </nav>

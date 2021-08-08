@@ -38,12 +38,12 @@ $certificates = $sql->fetchAll();
               <?php endif ?>
 
               <li><a href="">Hello, <?php echo $_SESSION['username']; ?></a></li>
-              <li><a href="action/post_logout.php">Logout</a></li>
+              <li><a href="action/post_logout.php"><i class="fa fa-sign-out"></i> Logout</a></li>
             <?php else: ?>
 
-                <li><a href="dashboard.php">Dashboard</a></li>
+              <!-- <li><a href="dashboard.php">Dashboard</a></li> -->
               <li><a href="#check-certificate">Check Certificate</a></li>
-              <!-- <li><a href="page_login.php">Login</a></li> -->
+              <li><a href="page_login.php">Login</a></li>
             <?php endif ?>
           </ul>
         </div>
@@ -58,7 +58,7 @@ $certificates = $sql->fetchAll();
       <section class="content-header">
         <h1>
           Certi Protect
-          <small>Version 0.1</small>
+          <small>Version 1</small>
         </h1>
       </section>
 

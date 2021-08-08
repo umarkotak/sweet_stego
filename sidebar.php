@@ -6,8 +6,12 @@
         <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p>M Umar Ramadhana</p>
-        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        <?php if (isset($_SESSION['role'])): ?>
+          <p><?php echo $_SESSION['username']; ?></p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        <?php else: ?>
+          <a href="#"><i class="fa fa-circle text-danger"></i> Offline</a>
+        <?php endif ?>
       </div>
     </div>
 
