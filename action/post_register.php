@@ -1,5 +1,3 @@
-POST Register
-
 <?php include "config.php" ?>
 <?php
 if (isset($_POST['submit'])) {
@@ -21,11 +19,11 @@ if (isset($_POST['submit'])) {
     );
     $sql->execute($data);
     $_SESSION['green-notice'] = "Pendaftaran berhasil";
-    header("location: $HOST_NAME/page_login.php");
+    echo "<script>location='$HOST_NAME/page_login.php'</script>";
   } catch (Exception $e) {
 
     $_SESSION['red-notice'] = "Terjadi kesalahan " . $e->getMessage();
-    header("location: $HOST_NAME/page_register.php");
+    echo "<script>location='$HOST_NAME/page_register.php'</script>";
   }
 }
 ?>

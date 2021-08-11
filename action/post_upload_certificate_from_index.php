@@ -1,7 +1,5 @@
-<?php echo "POST UPLOAD CERTIFICATE FROM INDEX"; ?>
-
 <?php
-include "../config.php";
+include "config.php";
 
 $nama_pemilik = $_POST['certificate_owner_name'];
 $nama_sertifikat = $_POST['certificate_name'];

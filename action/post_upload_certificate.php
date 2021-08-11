@@ -1,11 +1,5 @@
-<section class="content-header">
-  <h1>
-    POST
-    <small><?php echo "string"; ?></small>
-  </h1>
-</section>
-
 <?php
+include "config.php";
 
 $nama_pemilik = $_POST['certificate_owner_name'];
 $nama_sertifikat = $_POST['certificate_name'];
@@ -40,11 +34,11 @@ try {
   $sql->execute($data);
 
   $_SESSION['green-notice'] = "Sertifikat anda berhasil di publish";
-  header("location: dashboard.php?page=certificate-manager");
+  echo "<script>location='dashboard.php?page=certificate-manager'</script>";
 } catch (Exception $e) {
 
   $_SESSION['red-notice'] = "Terjadi kesalahan " . $e->getMessage();
-  header("location: dashboard.php?page=certificate-manager");
+  echo "<script>location='dashboard.php?page=certificate-manager'</script>";
 }
 
 ?>

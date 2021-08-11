@@ -22,11 +22,11 @@ try {
   $sql->execute($data);
 
   $_SESSION['green-notice'] = "Sertifikat berhasil dihapus";
-  header("location: dashboard.php?page=certificate-manager");
+  echo "<script>location='dashboard.php?page=certificate-manager'</script>";
 } catch (Exception $e) {
 
   $_SESSION['red-notice'] = "Terjadi kesalahan " . $e->getMessage();
-  header("location: dashboard.php?page=certificate-manager");
+  echo "<script>location='dashboard.php?page=certificate-manager'</script>";
 }
 
 ?>

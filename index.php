@@ -3,10 +3,14 @@
 <?php include "notice.php" ?>
 
 <?php
-$sql = $conn->prepare("SELECT * FROM published_certificates ORDER BY id DESC");
-$data = Array();
-$sql->execute($data);
-$certificates = $sql->fetchAll();
+try {
+  $sql = $conn->prepare("SELECT * FROM published_certificates ORDER BY id DESC");
+  $data = Array();
+  $sql->execute($data);
+  $certificates = $sql->fetchAll();
+} catch (Exception $e) {
+  echo $e->getMessage();
+}
 ?>
 
 <script src="lib/cleanstego.js"></script>

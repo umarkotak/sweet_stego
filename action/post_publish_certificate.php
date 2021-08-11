@@ -48,11 +48,11 @@ try {
   $sql->execute($data);
 
   $_SESSION['green-notice'] = "Sertifikat anda berhasil di publish";
-  header("location: dashboard.php?page=certificate-protect");
+  echo "<script>location='dashboard.php?page=certificate-protect'</script>";
 } catch (Exception $e) {
 
   $_SESSION['red-notice'] = "Terjadi kesalahan " . $e->getMessage();
-  header("location: dashboard.php?page=certificate-protect");
+  echo "<script>location='dashboard.php?page=certificate-protect'</script>";
 }
 
 ?>

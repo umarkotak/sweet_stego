@@ -1,9 +1,6 @@
-POST Login
-
-<?php ob_start(); ?>
 <?php include "config.php" ?>
 <?php
-if (isset($_POST['submit'])) { 
+if (isset($_POST['submit'])) {
   try {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -24,16 +21,16 @@ if (isset($_POST['submit'])) {
       $_SESSION['userdata'] = $data;
 
       $_SESSION['green-notice'] = "Login berhasil, selamat datang " . $_SESSION['username'];
-      header("location: $HOST_NAME/dashboard.php", true, 301);
+      echo "<script>location='$HOST_NAME/dashboard.php'</script>";
     } else {
 
       $_SESSION['red-notice'] = "Username atau password anda salah";
-      header("location: $HOST_NAME/page_login.php", true, 301);
+      echo "<script>location='$HOST_NAME/page_login.php'</script>";
     }
   } catch (Exception $e) {
 
     $_SESSION['red-notice'] = "Terjadi kesalahan " . $e->getMessage();
-    header("location: $HOST_NAME/page_login.php", true, 301);
+    echo "<script>location='$HOST_NAME/page_login.php'</script>";
   }
 }
 ?>
