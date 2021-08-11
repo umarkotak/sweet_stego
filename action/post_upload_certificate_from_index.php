@@ -36,11 +36,11 @@ try {
   $sql->execute($data);
 
   $_SESSION['green-notice'] = "Sertifikat anda berhasil dikirim";
-  header("location: /aplikasi_skripsi/index.php");
+  echo "<script>location='$HOST_NAME/index.php'</script>";
 } catch (Exception $e) {
 
   $_SESSION['red-notice'] = "Terjadi kesalahan " . $e->getMessage();
-  header("location: /aplikasi_skripsi/index.php");
+  echo "<script>location='$HOST_NAME/index.php'</script>";
 }
 
 ?>

@@ -78,6 +78,41 @@
         </div>
 
         <div class="box-body">
+
+
+          <div class="row">
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-primary">Lebar</button>
+                </div>
+                <input type="number" class="form-control" id="certificate_custom_width" name="certificate_custom_width" value="800">
+              </div>
+            </div>
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-primary">Tinggi</button>
+                </div>
+                <input type="number" class="form-control" id="certificate_custom_height" name="certificate_custom_height" value="450">
+              </div>
+            </div>
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-primary">Data Offset</button>
+                </div>
+                <input type="number" class="form-control" id="certificate_custom_data_offset" name="certificate_custom_data_offset" value="10">
+              </div>
+            </div>
+          </div>
+
+          <hr>
+
+          <div id="div_confirmation" class="form-group">
+            <button type="button" id="btn_protect_certificate" onclick="protect_certificate()" class="btn btn-success pull-right"><i class="fa fa-shield"></i> Protect Certificate</button>
+          </div>
+
           <div class="form-group">
             <label>Upload Gambar Sertifikat</label>
             <p>Gambar sertifikat yang diupload akan di resize menjadi 800 x 450 pixels,</p>
@@ -85,9 +120,6 @@
             <img id="preview_certificate_image" width="100%" class="img-thumbnail">
           </div>
 
-          <div id="div_confirmation" class="form-group">
-            <button type="button" id="btn_protect_certificate" onclick="protect_certificate()" class="btn btn-success pull-right">Protect Certificate</button>
-          </div>
         </div>
       </div>
     </div>
@@ -118,14 +150,21 @@
         </div>
 
         <div class="box-body">
-          <div style="height: 460px;">
-            <img src="" id="certificate_final_image" class="img-thumbnail">
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <button type="submit" id="btn_publish_certificate" class="btn btn-success btn-block" style="display: none;">Publish Certificate</button>
+            </div>
+            <div class="col-12 col-md-6">
+              <a id="btn_download_certificate" name="btn_download_certificate" href="#" onclick="this.href = $('#certificate_final_image').attr('src');"  class="btn btn-success btn-block" style="display: none;" download>Download Certificate</a>
+            </div>
           </div>
 
-          <input type="hidden" id="base64_certificate" name="base64_certificate">
+          <hr>
 
-          <button type="submit" id="btn_publish_certificate" class="btn btn-success pull-right" style="display: none;">Publish Certificate</button>
-          <a id="btn_download_certificate" name="btn_download_certificate" href="#" onclick="this.href = $('#certificate_final_image').attr('src');"  class="btn btn-success pull-right" style="display: none;" download>Download Certificate</a>
+          <div style="height: 500px; overflow: auto;">
+            <img src="" id="certificate_final_image" class="img-thumbnail">
+          </div>
+          <input type="hidden" id="base64_certificate" name="base64_certificate">
         </div>
       </div>
     </div>
@@ -248,7 +287,7 @@
         modify_original_file_content(image);
       }
     }
-    loadIMGtoCanvas('certificate_image','canvas',writefunc,850,170);
+    loadIMGtoCanvas('certificate_image','canvas',writefunc);
 
     console.log("finished");
   }
