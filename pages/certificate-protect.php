@@ -80,7 +80,7 @@
         <div class="box-body">
 
 
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-12 col-lg-4">
               <div class="input-group">
                 <div class="input-group-btn">
@@ -107,7 +107,7 @@
             </div>
           </div>
 
-          <hr>
+          <hr> -->
 
           <div id="div_confirmation" class="form-group">
             <button type="button" id="btn_protect_certificate" onclick="protect_certificate()" class="btn btn-success pull-right"><i class="fa fa-shield"></i> Protect Certificate</button>
@@ -115,7 +115,7 @@
 
           <div class="form-group">
             <label>Upload Gambar Sertifikat</label>
-            <p>Gambar sertifikat yang diupload akan di resize menjadi 800 x 450 pixels,</p>
+            <!-- <p>Gambar sertifikat yang diupload akan di resize menjadi 800 x 450 pixels,</p> -->
             <input type="file" accept="image/*" id="certificate_image" name="certificate_image" onchange="preview_image(event)" class="form-control">
             <img id="preview_certificate_image" width="100%" class="img-thumbnail">
           </div>

@@ -26,15 +26,15 @@
         </div>
 
         <div class="box-body">
+          <div id="process_certificate_section" class="form-group" hidden>
+            <button type="button" id="btn_check_certificate" name="btn_check_certificate" class="btn btn-success pull-right" onclick="check_certificate()" >Check Certificate</button>
+          </div>
+
           <div class="form-group">
             <label>Upload gambar sertifikat</label>
             <p>format : jpg, png</p>
             <input type="file" id="certificate_image" name="certificate_image" onchange="preview_image(event)" class="form-control">
             <img id="preview_certificate_image" width="100%" class="img-thumbnail">
-          </div>
-
-          <div id="process_certificate_section" class="form-group" hidden>
-            <button type="button" id="btn_check_certificate" name="btn_check_certificate" class="btn btn-success pull-right" onclick="check_certificate()" >Check Certificate</button>
           </div>
         </div>
       </div>
